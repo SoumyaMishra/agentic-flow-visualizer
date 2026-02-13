@@ -7,6 +7,12 @@ This project is a **scenario player/visualizer** (not a physics-accurate simulat
 - `metrics_output.json` (time-series data)
 - `pipeline_dashboard.html` (interactive playback dashboard)
 
+## Quick Preview
+
+A short preview of the full dashboard playback:
+
+![Agentic Flow Visualizer Preview](assets/dashboard_preview.gif)
+
 ## What It Shows
 
 - Pipeline stages and transitions over time
