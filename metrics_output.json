@@ -1,0 +1,7316 @@
+{
+  "metadata": {
+    "total_duration_sec": 13.5,
+    "sample_interval_sec": 0.4,
+    "clock_start": "13:45:00",
+    "clock_start_sec": 49500,
+    "hardware_config": {
+      "cpu_core_count": 12,
+      "l1_cache_kb": 64,
+      "l2_cache_kb": 1024,
+      "l3_cache_mb": 36,
+      "gpu_count": 3,
+      "gpu_vram_totals_mb": [
+        24576,
+        16384,
+        12288
+      ]
+    },
+    "steps": [
+      {
+        "id": "router",
+        "name": "Router",
+        "start": 0.0,
+        "end": 1.2
+      },
+      {
+        "id": "extract",
+        "name": "Extract",
+        "start": 1.2,
+        "end": 4.2
+      },
+      {
+        "id": "inference",
+        "name": "Inference",
+        "start": 4.0,
+        "end": 10.5
+      },
+      {
+        "id": "assembly",
+        "name": "Assembly",
+        "start": 10.5,
+        "end": 13.5
+      }
+    ],
+    "step_config": {
+      "router": {
+        "label": "Step 1: Router",
+        "hw": "CPU only",
+        "color": "#8B5CF6"
+      },
+      "extract": {
+        "label": "Step 2: Extract",
+        "hw": "CPU + RAM + SSD",
+        "color": "#3B82F6"
+      },
+      "inference": {
+        "label": "Step 3: Inference",
+        "hw": "GPU + CPU",
+        "color": "#10B981"
+      },
+      "assembly": {
+        "label": "Step 4: Assembly",
+        "hw": "CPU + SSD",
+        "color": "#F59E0B"
+      }
+    },
+    "events": [
+      {
+        "event_id": "E001",
+        "name": "OCR Burst",
+        "start": 1.3,
+        "end": 2.4,
+        "resource_target": "cpu",
+        "cpu": "gradual_increase",
+        "gpu": "off",
+        "mem": "off",
+        "disk": "gradual_increase",
+        "network": "off",
+        "resources": [
+          "cpu",
+          "disk"
+        ]
+      },
+      {
+        "event_id": "E002",
+        "name": "Retrieval",
+        "start": 2.0,
+        "end": 3.4,
+        "resource_target": "none",
+        "cpu": "off",
+        "gpu": "off",
+        "mem": "off",
+        "disk": "on",
+        "network": "gradual_increase",
+        "resources": [
+          "disk",
+          "network"
+        ]
+      },
+      {
+        "event_id": "E003",
+        "name": "GPU Warmup",
+        "start": 4.2,
+        "end": 5.4,
+        "resource_target": "gpu",
+        "cpu": "off",
+        "gpu": "gradual_increase",
+        "mem": "on",
+        "disk": "off",
+        "network": "off",
+        "resources": [
+          "gpu",
+          "mem"
+        ]
+      },
+      {
+        "event_id": "E004",
+        "name": "Batch Compute A",
+        "start": 5.1,
+        "end": 7.5,
+        "resource_target": "cpu_gpu",
+        "cpu": "on",
+        "gpu": "on",
+        "mem": "off",
+        "disk": "off",
+        "network": "off",
+        "resources": [
+          "cpu",
+          "gpu"
+        ]
+      },
+      {
+        "event_id": "E005",
+        "name": "Batch Compute B",
+        "start": 5.8,
+        "end": 7.8,
+        "resource_target": "cpu_gpu",
+        "cpu": "gradual_increase",
+        "gpu": "on",
+        "mem": "off",
+        "disk": "off",
+        "network": "off",
+        "resources": [
+          "cpu",
+          "gpu"
+        ]
+      },
+      {
+        "event_id": "E006",
+        "name": "Postprocess Upload",
+        "start": 10.9,
+        "end": 12.7,
+        "resource_target": "cpu",
+        "cpu": "on",
+        "gpu": "off",
+        "mem": "off",
+        "disk": "off",
+        "network": "gradual_increase",
+        "resources": [
+          "cpu",
+          "network"
+        ]
+      }
+    ]
+  },
+  "samples": [
+    {
+      "t": 0.0,
+      "clock": "13:45:00",
+      "step": "router",
+      "active_event_ids": [],
+      "cpu": 11.8,
+      "cpu_temp": 36.2,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 8.6,
+          "temp": 32.9
+        },
+        {
+          "core_id": 1,
+          "util": 10.1,
+          "temp": 36.0
+        },
+        {
+          "core_id": 2,
+          "util": 10.8,
+          "temp": 33.2
+        },
+        {
+          "core_id": 3,
+          "util": 12.8,
+          "temp": 36.7
+        },
+        {
+          "core_id": 4,
+          "util": 13.8,
+          "temp": 36.8
+        },
+        {
+          "core_id": 5,
+          "util": 10.7,
+          "temp": 35.4
+        },
+        {
+          "core_id": 6,
+          "util": 7.5,
+          "temp": 32.6
+        },
+        {
+          "core_id": 7,
+          "util": 7.4,
+          "temp": 31.0
+        },
+        {
+          "core_id": 8,
+          "util": 12.0,
+          "temp": 35.6
+        },
+        {
+          "core_id": 9,
+          "util": 8.8,
+          "temp": 33.0
+        },
+        {
+          "core_id": 10,
+          "util": 7.4,
+          "temp": 32.0
+        },
+        {
+          "core_id": 11,
+          "util": 9.6,
+          "temp": 35.3
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 65.3
+          },
+          {
+            "core_id": 1,
+            "value": 65.5
+          },
+          {
+            "core_id": 2,
+            "value": 65.6
+          },
+          {
+            "core_id": 3,
+            "value": 65.9
+          },
+          {
+            "core_id": 4,
+            "value": 66.1
+          },
+          {
+            "core_id": 5,
+            "value": 65.6
+          },
+          {
+            "core_id": 6,
+            "value": 65.1
+          },
+          {
+            "core_id": 7,
+            "value": 65.1
+          },
+          {
+            "core_id": 8,
+            "value": 65.8
+          },
+          {
+            "core_id": 9,
+            "value": 65.3
+          },
+          {
+            "core_id": 10,
+            "value": 65.1
+          },
+          {
+            "core_id": 11,
+            "value": 65.4
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1027.9
+          },
+          {
+            "core_id": 1,
+            "value": 1028.5
+          },
+          {
+            "core_id": 2,
+            "value": 1028.9
+          },
+          {
+            "core_id": 3,
+            "value": 1029.8
+          },
+          {
+            "core_id": 4,
+            "value": 1030.2
+          },
+          {
+            "core_id": 5,
+            "value": 1028.8
+          },
+          {
+            "core_id": 6,
+            "value": 1027.4
+          },
+          {
+            "core_id": 7,
+            "value": 1027.3
+          },
+          {
+            "core_id": 8,
+            "value": 1029.4
+          },
+          {
+            "core_id": 9,
+            "value": 1028.0
+          },
+          {
+            "core_id": 10,
+            "value": 1027.3
+          },
+          {
+            "core_id": 11,
+            "value": 1028.3
+          }
+        ],
+        "l3_global_mb": 37.49
+      },
+      "mem": 25.2,
+      "mem_mb": 4132.0,
+      "disk_r": 0.01,
+      "disk_w": 0.01,
+      "net_s": 0.01,
+      "net_r": 0.0,
+      "gpu_util": 0,
+      "gpu_vram": 0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 28.4,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 0,
+          "vram": 9.0,
+          "vram_total": 24576,
+          "temp": 26.5
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 0,
+          "vram": 0,
+          "vram_total": 16384,
+          "temp": 25.4
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 3.3,
+          "vram": 66.0,
+          "vram_total": 12288,
+          "temp": 28.9
+        }
+      ]
+    },
+    {
+      "t": 0.4,
+      "clock": "13:45:00",
+      "step": "router",
+      "active_event_ids": [],
+      "cpu": 18.3,
+      "cpu_temp": 40.0,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 21.3,
+          "temp": 40.2
+        },
+        {
+          "core_id": 1,
+          "util": 18.0,
+          "temp": 37.3
+        },
+        {
+          "core_id": 2,
+          "util": 20.5,
+          "temp": 40.3
+        },
+        {
+          "core_id": 3,
+          "util": 15.1,
+          "temp": 39.5
+        },
+        {
+          "core_id": 4,
+          "util": 19.9,
+          "temp": 42.0
+        },
+        {
+          "core_id": 5,
+          "util": 16.1,
+          "temp": 36.6
+        },
+        {
+          "core_id": 6,
+          "util": 17.2,
+          "temp": 39.2
+        },
+        {
+          "core_id": 7,
+          "util": 17.6,
+          "temp": 38.2
+        },
+        {
+          "core_id": 8,
+          "util": 21.8,
+          "temp": 40.1
+        },
+        {
+          "core_id": 9,
+          "util": 17.0,
+          "temp": 36.7
+        },
+        {
+          "core_id": 10,
+          "util": 14.5,
+          "temp": 35.9
+        },
+        {
+          "core_id": 11,
+          "util": 14.8,
+          "temp": 38.2
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 67.2
+          },
+          {
+            "core_id": 1,
+            "value": 66.7
+          },
+          {
+            "core_id": 2,
+            "value": 67.1
+          },
+          {
+            "core_id": 3,
+            "value": 66.3
+          },
+          {
+            "core_id": 4,
+            "value": 67.0
+          },
+          {
+            "core_id": 5,
+            "value": 66.4
+          },
+          {
+            "core_id": 6,
+            "value": 66.6
+          },
+          {
+            "core_id": 7,
+            "value": 66.6
+          },
+          {
+            "core_id": 8,
+            "value": 67.3
+          },
+          {
+            "core_id": 9,
+            "value": 66.5
+          },
+          {
+            "core_id": 10,
+            "value": 66.2
+          },
+          {
+            "core_id": 11,
+            "value": 66.2
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1033.6
+          },
+          {
+            "core_id": 1,
+            "value": 1032.1
+          },
+          {
+            "core_id": 2,
+            "value": 1033.2
+          },
+          {
+            "core_id": 3,
+            "value": 1030.8
+          },
+          {
+            "core_id": 4,
+            "value": 1033.0
+          },
+          {
+            "core_id": 5,
+            "value": 1031.2
+          },
+          {
+            "core_id": 6,
+            "value": 1031.7
+          },
+          {
+            "core_id": 7,
+            "value": 1031.9
+          },
+          {
+            "core_id": 8,
+            "value": 1033.8
+          },
+          {
+            "core_id": 9,
+            "value": 1031.7
+          },
+          {
+            "core_id": 10,
+            "value": 1030.5
+          },
+          {
+            "core_id": 11,
+            "value": 1030.7
+          }
+        ],
+        "l3_global_mb": 38.3
+      },
+      "mem": 27.5,
+      "mem_mb": 4508.0,
+      "disk_r": 0.03,
+      "disk_w": 0.02,
+      "net_s": 0.01,
+      "net_r": 0.0,
+      "gpu_util": 0,
+      "gpu_vram": 0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 27.8,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 3.7,
+          "vram": 0,
+          "vram_total": 24576,
+          "temp": 26.2
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 0,
+          "vram": 0,
+          "vram_total": 16384,
+          "temp": 28.0
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 3.7,
+          "vram": 0,
+          "vram_total": 12288,
+          "temp": 26.9
+        }
+      ]
+    },
+    {
+      "t": 0.8,
+      "clock": "13:45:00",
+      "step": "router",
+      "active_event_ids": [],
+      "cpu": 24.1,
+      "cpu_temp": 43.1,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 25.5,
+          "temp": 43.3
+        },
+        {
+          "core_id": 1,
+          "util": 27.5,
+          "temp": 45.0
+        },
+        {
+          "core_id": 2,
+          "util": 19.6,
+          "temp": 39.9
+        },
+        {
+          "core_id": 3,
+          "util": 25.5,
+          "temp": 45.1
+        },
+        {
+          "core_id": 4,
+          "util": 28.0,
+          "temp": 43.7
+        },
+        {
+          "core_id": 5,
+          "util": 21.7,
+          "temp": 41.0
+        },
+        {
+          "core_id": 6,
+          "util": 22.1,
+          "temp": 41.9
+        },
+        {
+          "core_id": 7,
+          "util": 22.0,
+          "temp": 40.0
+        },
+        {
+          "core_id": 8,
+          "util": 28.1,
+          "temp": 44.6
+        },
+        {
+          "core_id": 9,
+          "util": 25.4,
+          "temp": 44.4
+        },
+        {
+          "core_id": 10,
+          "util": 22.0,
+          "temp": 41.5
+        },
+        {
+          "core_id": 11,
+          "util": 20.9,
+          "temp": 40.6
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 67.8
+          },
+          {
+            "core_id": 1,
+            "value": 68.1
+          },
+          {
+            "core_id": 2,
+            "value": 66.9
+          },
+          {
+            "core_id": 3,
+            "value": 67.8
+          },
+          {
+            "core_id": 4,
+            "value": 68.2
+          },
+          {
+            "core_id": 5,
+            "value": 67.3
+          },
+          {
+            "core_id": 6,
+            "value": 67.3
+          },
+          {
+            "core_id": 7,
+            "value": 67.3
+          },
+          {
+            "core_id": 8,
+            "value": 68.2
+          },
+          {
+            "core_id": 9,
+            "value": 67.8
+          },
+          {
+            "core_id": 10,
+            "value": 67.3
+          },
+          {
+            "core_id": 11,
+            "value": 67.1
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1035.5
+          },
+          {
+            "core_id": 1,
+            "value": 1036.4
+          },
+          {
+            "core_id": 2,
+            "value": 1032.8
+          },
+          {
+            "core_id": 3,
+            "value": 1035.5
+          },
+          {
+            "core_id": 4,
+            "value": 1036.6
+          },
+          {
+            "core_id": 5,
+            "value": 1033.8
+          },
+          {
+            "core_id": 6,
+            "value": 1033.9
+          },
+          {
+            "core_id": 7,
+            "value": 1033.9
+          },
+          {
+            "core_id": 8,
+            "value": 1036.6
+          },
+          {
+            "core_id": 9,
+            "value": 1035.4
+          },
+          {
+            "core_id": 10,
+            "value": 1033.9
+          },
+          {
+            "core_id": 11,
+            "value": 1033.4
+          }
+        ],
+        "l3_global_mb": 39.03
+      },
+      "mem": 30.4,
+      "mem_mb": 4976.0,
+      "disk_r": 0.05,
+      "disk_w": 0.04,
+      "net_s": 0.02,
+      "net_r": 0.01,
+      "gpu_util": 0,
+      "gpu_vram": 0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 28.2,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 0,
+          "vram": 67.0,
+          "vram_total": 24576,
+          "temp": 25.1
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 0,
+          "vram": 81.0,
+          "vram_total": 16384,
+          "temp": 25
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 0,
+          "vram": 0,
+          "vram_total": 12288,
+          "temp": 26.7
+        }
+      ]
+    },
+    {
+      "t": 1.2,
+      "clock": "13:45:01",
+      "step": "extract",
+      "active_event_ids": [],
+      "cpu": 21.1,
+      "cpu_temp": 40.2,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 19.2,
+          "temp": 39.1
+        },
+        {
+          "core_id": 1,
+          "util": 23.9,
+          "temp": 44.4
+        },
+        {
+          "core_id": 2,
+          "util": 16.5,
+          "temp": 39.8
+        },
+        {
+          "core_id": 3,
+          "util": 17.6,
+          "temp": 39.2
+        },
+        {
+          "core_id": 4,
+          "util": 20.0,
+          "temp": 38.9
+        },
+        {
+          "core_id": 5,
+          "util": 21.9,
+          "temp": 43.1
+        },
+        {
+          "core_id": 6,
+          "util": 22.8,
+          "temp": 43.0
+        },
+        {
+          "core_id": 7,
+          "util": 16.9,
+          "temp": 39.5
+        },
+        {
+          "core_id": 8,
+          "util": 18.4,
+          "temp": 39.4
+        },
+        {
+          "core_id": 9,
+          "util": 21.0,
+          "temp": 42.8
+        },
+        {
+          "core_id": 10,
+          "util": 16.6,
+          "temp": 38.9
+        },
+        {
+          "core_id": 11,
+          "util": 25.8,
+          "temp": 43.7
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 66.9
+          },
+          {
+            "core_id": 1,
+            "value": 67.6
+          },
+          {
+            "core_id": 2,
+            "value": 66.5
+          },
+          {
+            "core_id": 3,
+            "value": 66.6
+          },
+          {
+            "core_id": 4,
+            "value": 67.0
+          },
+          {
+            "core_id": 5,
+            "value": 67.3
+          },
+          {
+            "core_id": 6,
+            "value": 67.4
+          },
+          {
+            "core_id": 7,
+            "value": 66.5
+          },
+          {
+            "core_id": 8,
+            "value": 66.8
+          },
+          {
+            "core_id": 9,
+            "value": 67.2
+          },
+          {
+            "core_id": 10,
+            "value": 66.5
+          },
+          {
+            "core_id": 11,
+            "value": 67.9
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1032.6
+          },
+          {
+            "core_id": 1,
+            "value": 1034.8
+          },
+          {
+            "core_id": 2,
+            "value": 1031.4
+          },
+          {
+            "core_id": 3,
+            "value": 1031.9
+          },
+          {
+            "core_id": 4,
+            "value": 1033.0
+          },
+          {
+            "core_id": 5,
+            "value": 1033.9
+          },
+          {
+            "core_id": 6,
+            "value": 1034.3
+          },
+          {
+            "core_id": 7,
+            "value": 1031.6
+          },
+          {
+            "core_id": 8,
+            "value": 1032.3
+          },
+          {
+            "core_id": 9,
+            "value": 1033.5
+          },
+          {
+            "core_id": 10,
+            "value": 1031.5
+          },
+          {
+            "core_id": 11,
+            "value": 1035.6
+          }
+        ],
+        "l3_global_mb": 38.66
+      },
+      "mem": 28.3,
+      "mem_mb": 4634.0,
+      "disk_r": 0.06,
+      "disk_w": 0.05,
+      "net_s": 0.02,
+      "net_r": 0.01,
+      "gpu_util": 0,
+      "gpu_vram": 23.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 28.2,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 3.4,
+          "vram": 0,
+          "vram_total": 24576,
+          "temp": 29.3
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 3.1,
+          "vram": 0,
+          "vram_total": 16384,
+          "temp": 28.3
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 0,
+          "vram": 33.0,
+          "vram_total": 12288,
+          "temp": 25
+        }
+      ]
+    },
+    {
+      "t": 1.6,
+      "clock": "13:45:01",
+      "step": "extract",
+      "active_event_ids": [
+        "E001"
+      ],
+      "cpu": 24.5,
+      "cpu_temp": 42.2,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 22.6,
+          "temp": 42.6
+        },
+        {
+          "core_id": 1,
+          "util": 20.6,
+          "temp": 40.2
+        },
+        {
+          "core_id": 2,
+          "util": 20.1,
+          "temp": 39.6
+        },
+        {
+          "core_id": 3,
+          "util": 28.7,
+          "temp": 44.7
+        },
+        {
+          "core_id": 4,
+          "util": 21.2,
+          "temp": 42.1
+        },
+        {
+          "core_id": 5,
+          "util": 25.4,
+          "temp": 45.6
+        },
+        {
+          "core_id": 6,
+          "util": 24.0,
+          "temp": 42.3
+        },
+        {
+          "core_id": 7,
+          "util": 25.4,
+          "temp": 43.0
+        },
+        {
+          "core_id": 8,
+          "util": 26.5,
+          "temp": 43.3
+        },
+        {
+          "core_id": 9,
+          "util": 22.3,
+          "temp": 43.0
+        },
+        {
+          "core_id": 10,
+          "util": 26.1,
+          "temp": 42.1
+        },
+        {
+          "core_id": 11,
+          "util": 27.2,
+          "temp": 46.8
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 67.4
+          },
+          {
+            "core_id": 1,
+            "value": 67.1
+          },
+          {
+            "core_id": 2,
+            "value": 67.0
+          },
+          {
+            "core_id": 3,
+            "value": 68.3
+          },
+          {
+            "core_id": 4,
+            "value": 67.2
+          },
+          {
+            "core_id": 5,
+            "value": 67.8
+          },
+          {
+            "core_id": 6,
+            "value": 67.6
+          },
+          {
+            "core_id": 7,
+            "value": 67.8
+          },
+          {
+            "core_id": 8,
+            "value": 68.0
+          },
+          {
+            "core_id": 9,
+            "value": 67.3
+          },
+          {
+            "core_id": 10,
+            "value": 67.9
+          },
+          {
+            "core_id": 11,
+            "value": 68.1
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1034.2
+          },
+          {
+            "core_id": 1,
+            "value": 1033.3
+          },
+          {
+            "core_id": 2,
+            "value": 1033.0
+          },
+          {
+            "core_id": 3,
+            "value": 1036.9
+          },
+          {
+            "core_id": 4,
+            "value": 1033.5
+          },
+          {
+            "core_id": 5,
+            "value": 1035.4
+          },
+          {
+            "core_id": 6,
+            "value": 1034.8
+          },
+          {
+            "core_id": 7,
+            "value": 1035.4
+          },
+          {
+            "core_id": 8,
+            "value": 1035.9
+          },
+          {
+            "core_id": 9,
+            "value": 1034.0
+          },
+          {
+            "core_id": 10,
+            "value": 1035.7
+          },
+          {
+            "core_id": 11,
+            "value": 1036.2
+          }
+        ],
+        "l3_global_mb": 39.09
+      },
+      "mem": 28.1,
+      "mem_mb": 4603.0,
+      "disk_r": 0.09,
+      "disk_w": 0.08,
+      "net_s": 0.02,
+      "net_r": 0.02,
+      "gpu_util": 0,
+      "gpu_vram": 0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 27.6,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 1.3,
+          "vram": 0,
+          "vram_total": 24576,
+          "temp": 25.2
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 0,
+          "vram": 66.0,
+          "vram_total": 16384,
+          "temp": 25.9
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 0.4,
+          "vram": 86.0,
+          "vram_total": 12288,
+          "temp": 25.7
+        }
+      ]
+    },
+    {
+      "t": 2.0,
+      "clock": "13:45:02",
+      "step": "extract",
+      "active_event_ids": [
+        "E001",
+        "E002"
+      ],
+      "cpu": 36.4,
+      "cpu_temp": 47.9,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 41.1,
+          "temp": 52.1
+        },
+        {
+          "core_id": 1,
+          "util": 34.2,
+          "temp": 47.0
+        },
+        {
+          "core_id": 2,
+          "util": 31.7,
+          "temp": 49.1
+        },
+        {
+          "core_id": 3,
+          "util": 32.7,
+          "temp": 48.7
+        },
+        {
+          "core_id": 4,
+          "util": 34.2,
+          "temp": 48.9
+        },
+        {
+          "core_id": 5,
+          "util": 33.5,
+          "temp": 47.0
+        },
+        {
+          "core_id": 6,
+          "util": 39.9,
+          "temp": 51.7
+        },
+        {
+          "core_id": 7,
+          "util": 35.5,
+          "temp": 51.6
+        },
+        {
+          "core_id": 8,
+          "util": 38.2,
+          "temp": 53.3
+        },
+        {
+          "core_id": 9,
+          "util": 37.2,
+          "temp": 52.9
+        },
+        {
+          "core_id": 10,
+          "util": 38.1,
+          "temp": 51.8
+        },
+        {
+          "core_id": 11,
+          "util": 34.2,
+          "temp": 47.8
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 70.2
+          },
+          {
+            "core_id": 1,
+            "value": 69.1
+          },
+          {
+            "core_id": 2,
+            "value": 68.8
+          },
+          {
+            "core_id": 3,
+            "value": 68.9
+          },
+          {
+            "core_id": 4,
+            "value": 69.1
+          },
+          {
+            "core_id": 5,
+            "value": 69.0
+          },
+          {
+            "core_id": 6,
+            "value": 70.0
+          },
+          {
+            "core_id": 7,
+            "value": 69.3
+          },
+          {
+            "core_id": 8,
+            "value": 69.7
+          },
+          {
+            "core_id": 9,
+            "value": 69.6
+          },
+          {
+            "core_id": 10,
+            "value": 69.7
+          },
+          {
+            "core_id": 11,
+            "value": 69.1
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1042.5
+          },
+          {
+            "core_id": 1,
+            "value": 1039.4
+          },
+          {
+            "core_id": 2,
+            "value": 1038.3
+          },
+          {
+            "core_id": 3,
+            "value": 1038.7
+          },
+          {
+            "core_id": 4,
+            "value": 1039.4
+          },
+          {
+            "core_id": 5,
+            "value": 1039.1
+          },
+          {
+            "core_id": 6,
+            "value": 1042.0
+          },
+          {
+            "core_id": 7,
+            "value": 1040.0
+          },
+          {
+            "core_id": 8,
+            "value": 1041.2
+          },
+          {
+            "core_id": 9,
+            "value": 1040.7
+          },
+          {
+            "core_id": 10,
+            "value": 1041.1
+          },
+          {
+            "core_id": 11,
+            "value": 1039.4
+          }
+        ],
+        "l3_global_mb": 40.59
+      },
+      "mem": 29.8,
+      "mem_mb": 4880.0,
+      "disk_r": 0.14,
+      "disk_w": 0.14,
+      "net_s": 0.02,
+      "net_r": 0.03,
+      "gpu_util": 0,
+      "gpu_vram": 20.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 27.6,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 1.6,
+          "vram": 0,
+          "vram_total": 24576,
+          "temp": 28.5
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 2.9,
+          "vram": 0,
+          "vram_total": 16384,
+          "temp": 26.8
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 3.7,
+          "vram": 0,
+          "vram_total": 12288,
+          "temp": 28.3
+        }
+      ]
+    },
+    {
+      "t": 2.4,
+      "clock": "13:45:02",
+      "step": "extract",
+      "active_event_ids": [
+        "E002"
+      ],
+      "cpu": 36.6,
+      "cpu_temp": 48.5,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 40.1,
+          "temp": 54.8
+        },
+        {
+          "core_id": 1,
+          "util": 37.3,
+          "temp": 53.0
+        },
+        {
+          "core_id": 2,
+          "util": 40.9,
+          "temp": 54.1
+        },
+        {
+          "core_id": 3,
+          "util": 36.3,
+          "temp": 51.6
+        },
+        {
+          "core_id": 4,
+          "util": 40.5,
+          "temp": 54.0
+        },
+        {
+          "core_id": 5,
+          "util": 39.1,
+          "temp": 51.1
+        },
+        {
+          "core_id": 6,
+          "util": 33.3,
+          "temp": 47.3
+        },
+        {
+          "core_id": 7,
+          "util": 34.1,
+          "temp": 49.5
+        },
+        {
+          "core_id": 8,
+          "util": 40.7,
+          "temp": 51.1
+        },
+        {
+          "core_id": 9,
+          "util": 36.2,
+          "temp": 51.3
+        },
+        {
+          "core_id": 10,
+          "util": 40.8,
+          "temp": 52.4
+        },
+        {
+          "core_id": 11,
+          "util": 39.4,
+          "temp": 54.4
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 70.0
+          },
+          {
+            "core_id": 1,
+            "value": 69.6
+          },
+          {
+            "core_id": 2,
+            "value": 70.1
+          },
+          {
+            "core_id": 3,
+            "value": 69.4
+          },
+          {
+            "core_id": 4,
+            "value": 70.1
+          },
+          {
+            "core_id": 5,
+            "value": 69.9
+          },
+          {
+            "core_id": 6,
+            "value": 69.0
+          },
+          {
+            "core_id": 7,
+            "value": 69.1
+          },
+          {
+            "core_id": 8,
+            "value": 70.1
+          },
+          {
+            "core_id": 9,
+            "value": 69.4
+          },
+          {
+            "core_id": 10,
+            "value": 70.1
+          },
+          {
+            "core_id": 11,
+            "value": 69.9
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1042.0
+          },
+          {
+            "core_id": 1,
+            "value": 1040.8
+          },
+          {
+            "core_id": 2,
+            "value": 1042.4
+          },
+          {
+            "core_id": 3,
+            "value": 1040.3
+          },
+          {
+            "core_id": 4,
+            "value": 1042.2
+          },
+          {
+            "core_id": 5,
+            "value": 1041.6
+          },
+          {
+            "core_id": 6,
+            "value": 1039.0
+          },
+          {
+            "core_id": 7,
+            "value": 1039.3
+          },
+          {
+            "core_id": 8,
+            "value": 1042.3
+          },
+          {
+            "core_id": 9,
+            "value": 1040.3
+          },
+          {
+            "core_id": 10,
+            "value": 1042.4
+          },
+          {
+            "core_id": 11,
+            "value": 1041.7
+          }
+        ],
+        "l3_global_mb": 40.61
+      },
+      "mem": 31.4,
+      "mem_mb": 5146.0,
+      "disk_r": 0.18,
+      "disk_w": 0.2,
+      "net_s": 0.04,
+      "net_r": 0.05,
+      "gpu_util": 0,
+      "gpu_vram": 0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 27.7,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 2.8,
+          "vram": 0,
+          "vram_total": 24576,
+          "temp": 27.3
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 0,
+          "vram": 0,
+          "vram_total": 16384,
+          "temp": 27.2
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 0,
+          "vram": 0,
+          "vram_total": 12288,
+          "temp": 25.3
+        }
+      ]
+    },
+    {
+      "t": 2.8,
+      "clock": "13:45:02",
+      "step": "extract",
+      "active_event_ids": [
+        "E002"
+      ],
+      "cpu": 40.7,
+      "cpu_temp": 50.1,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 44.7,
+          "temp": 57.8
+        },
+        {
+          "core_id": 1,
+          "util": 37.1,
+          "temp": 50.5
+        },
+        {
+          "core_id": 2,
+          "util": 41.0,
+          "temp": 51.4
+        },
+        {
+          "core_id": 3,
+          "util": 43.4,
+          "temp": 53.9
+        },
+        {
+          "core_id": 4,
+          "util": 37.0,
+          "temp": 51.4
+        },
+        {
+          "core_id": 5,
+          "util": 40.2,
+          "temp": 51.5
+        },
+        {
+          "core_id": 6,
+          "util": 38.6,
+          "temp": 53.5
+        },
+        {
+          "core_id": 7,
+          "util": 37.8,
+          "temp": 51.2
+        },
+        {
+          "core_id": 8,
+          "util": 37.9,
+          "temp": 50.6
+        },
+        {
+          "core_id": 9,
+          "util": 39.9,
+          "temp": 51.9
+        },
+        {
+          "core_id": 10,
+          "util": 43.6,
+          "temp": 54.8
+        },
+        {
+          "core_id": 11,
+          "util": 38.7,
+          "temp": 52.3
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 70.7
+          },
+          {
+            "core_id": 1,
+            "value": 69.6
+          },
+          {
+            "core_id": 2,
+            "value": 70.2
+          },
+          {
+            "core_id": 3,
+            "value": 70.5
+          },
+          {
+            "core_id": 4,
+            "value": 69.5
+          },
+          {
+            "core_id": 5,
+            "value": 70.0
+          },
+          {
+            "core_id": 6,
+            "value": 69.8
+          },
+          {
+            "core_id": 7,
+            "value": 69.7
+          },
+          {
+            "core_id": 8,
+            "value": 69.7
+          },
+          {
+            "core_id": 9,
+            "value": 70.0
+          },
+          {
+            "core_id": 10,
+            "value": 70.5
+          },
+          {
+            "core_id": 11,
+            "value": 69.8
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1044.1
+          },
+          {
+            "core_id": 1,
+            "value": 1040.7
+          },
+          {
+            "core_id": 2,
+            "value": 1042.5
+          },
+          {
+            "core_id": 3,
+            "value": 1043.5
+          },
+          {
+            "core_id": 4,
+            "value": 1040.7
+          },
+          {
+            "core_id": 5,
+            "value": 1042.1
+          },
+          {
+            "core_id": 6,
+            "value": 1041.4
+          },
+          {
+            "core_id": 7,
+            "value": 1041.0
+          },
+          {
+            "core_id": 8,
+            "value": 1041.1
+          },
+          {
+            "core_id": 9,
+            "value": 1042.0
+          },
+          {
+            "core_id": 10,
+            "value": 1043.6
+          },
+          {
+            "core_id": 11,
+            "value": 1041.4
+          }
+        ],
+        "l3_global_mb": 41.13
+      },
+      "mem": 35.5,
+      "mem_mb": 5819.0,
+      "disk_r": 0.21,
+      "disk_w": 0.26,
+      "net_s": 0.06,
+      "net_r": 0.08,
+      "gpu_util": 0,
+      "gpu_vram": 28.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 27.1,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 0,
+          "vram": 93.0,
+          "vram_total": 24576,
+          "temp": 26.3
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 0,
+          "vram": 0,
+          "vram_total": 16384,
+          "temp": 25.9
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 1.3,
+          "vram": 0,
+          "vram_total": 12288,
+          "temp": 27.7
+        }
+      ]
+    },
+    {
+      "t": 3.2,
+      "clock": "13:45:03",
+      "step": "extract",
+      "active_event_ids": [
+        "E002"
+      ],
+      "cpu": 46.2,
+      "cpu_temp": 53.9,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 45.6,
+          "temp": 55.0
+        },
+        {
+          "core_id": 1,
+          "util": 46.4,
+          "temp": 58.3
+        },
+        {
+          "core_id": 2,
+          "util": 45.9,
+          "temp": 58.3
+        },
+        {
+          "core_id": 3,
+          "util": 50.3,
+          "temp": 57.3
+        },
+        {
+          "core_id": 4,
+          "util": 46.1,
+          "temp": 56.3
+        },
+        {
+          "core_id": 5,
+          "util": 50.3,
+          "temp": 57.4
+        },
+        {
+          "core_id": 6,
+          "util": 46.7,
+          "temp": 56.3
+        },
+        {
+          "core_id": 7,
+          "util": 45.7,
+          "temp": 57.0
+        },
+        {
+          "core_id": 8,
+          "util": 44.0,
+          "temp": 54.2
+        },
+        {
+          "core_id": 9,
+          "util": 44.7,
+          "temp": 57.3
+        },
+        {
+          "core_id": 10,
+          "util": 46.8,
+          "temp": 56.2
+        },
+        {
+          "core_id": 11,
+          "util": 44.2,
+          "temp": 55.3
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 70.8
+          },
+          {
+            "core_id": 1,
+            "value": 71.0
+          },
+          {
+            "core_id": 2,
+            "value": 70.9
+          },
+          {
+            "core_id": 3,
+            "value": 71.5
+          },
+          {
+            "core_id": 4,
+            "value": 70.9
+          },
+          {
+            "core_id": 5,
+            "value": 71.5
+          },
+          {
+            "core_id": 6,
+            "value": 71.0
+          },
+          {
+            "core_id": 7,
+            "value": 70.9
+          },
+          {
+            "core_id": 8,
+            "value": 70.6
+          },
+          {
+            "core_id": 9,
+            "value": 70.7
+          },
+          {
+            "core_id": 10,
+            "value": 71.0
+          },
+          {
+            "core_id": 11,
+            "value": 70.6
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1044.5
+          },
+          {
+            "core_id": 1,
+            "value": 1044.9
+          },
+          {
+            "core_id": 2,
+            "value": 1044.7
+          },
+          {
+            "core_id": 3,
+            "value": 1046.6
+          },
+          {
+            "core_id": 4,
+            "value": 1044.7
+          },
+          {
+            "core_id": 5,
+            "value": 1046.6
+          },
+          {
+            "core_id": 6,
+            "value": 1045.0
+          },
+          {
+            "core_id": 7,
+            "value": 1044.6
+          },
+          {
+            "core_id": 8,
+            "value": 1043.8
+          },
+          {
+            "core_id": 9,
+            "value": 1044.1
+          },
+          {
+            "core_id": 10,
+            "value": 1045.1
+          },
+          {
+            "core_id": 11,
+            "value": 1043.9
+          }
+        ],
+        "l3_global_mb": 41.83
+      },
+      "mem": 39.8,
+      "mem_mb": 6527.0,
+      "disk_r": 0.26,
+      "disk_w": 0.32,
+      "net_s": 0.1,
+      "net_r": 0.12,
+      "gpu_util": 0.5,
+      "gpu_vram": 0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 27.1,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 0,
+          "vram": 0,
+          "vram_total": 24576,
+          "temp": 26.3
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 0.9,
+          "vram": 0,
+          "vram_total": 16384,
+          "temp": 27.1
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 0,
+          "vram": 85.0,
+          "vram_total": 12288,
+          "temp": 25.3
+        }
+      ]
+    },
+    {
+      "t": 3.6,
+      "clock": "13:45:03",
+      "step": "extract",
+      "active_event_ids": [],
+      "cpu": 51.0,
+      "cpu_temp": 57.2,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 49.6,
+          "temp": 57.5
+        },
+        {
+          "core_id": 1,
+          "util": 49.7,
+          "temp": 59.5
+        },
+        {
+          "core_id": 2,
+          "util": 53.3,
+          "temp": 60.0
+        },
+        {
+          "core_id": 3,
+          "util": 51.9,
+          "temp": 62.2
+        },
+        {
+          "core_id": 4,
+          "util": 46.2,
+          "temp": 56.1
+        },
+        {
+          "core_id": 5,
+          "util": 50.4,
+          "temp": 61.4
+        },
+        {
+          "core_id": 6,
+          "util": 50.2,
+          "temp": 58.6
+        },
+        {
+          "core_id": 7,
+          "util": 47.3,
+          "temp": 56.0
+        },
+        {
+          "core_id": 8,
+          "util": 54.8,
+          "temp": 62.1
+        },
+        {
+          "core_id": 9,
+          "util": 48.8,
+          "temp": 57.5
+        },
+        {
+          "core_id": 10,
+          "util": 47.8,
+          "temp": 56.8
+        },
+        {
+          "core_id": 11,
+          "util": 48.1,
+          "temp": 57.9
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 71.4
+          },
+          {
+            "core_id": 1,
+            "value": 71.5
+          },
+          {
+            "core_id": 2,
+            "value": 72.0
+          },
+          {
+            "core_id": 3,
+            "value": 71.8
+          },
+          {
+            "core_id": 4,
+            "value": 70.9
+          },
+          {
+            "core_id": 5,
+            "value": 71.6
+          },
+          {
+            "core_id": 6,
+            "value": 71.5
+          },
+          {
+            "core_id": 7,
+            "value": 71.1
+          },
+          {
+            "core_id": 8,
+            "value": 72.2
+          },
+          {
+            "core_id": 9,
+            "value": 71.3
+          },
+          {
+            "core_id": 10,
+            "value": 71.2
+          },
+          {
+            "core_id": 11,
+            "value": 71.2
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1046.3
+          },
+          {
+            "core_id": 1,
+            "value": 1046.4
+          },
+          {
+            "core_id": 2,
+            "value": 1048.0
+          },
+          {
+            "core_id": 3,
+            "value": 1047.4
+          },
+          {
+            "core_id": 4,
+            "value": 1044.8
+          },
+          {
+            "core_id": 5,
+            "value": 1046.7
+          },
+          {
+            "core_id": 6,
+            "value": 1046.6
+          },
+          {
+            "core_id": 7,
+            "value": 1045.3
+          },
+          {
+            "core_id": 8,
+            "value": 1048.7
+          },
+          {
+            "core_id": 9,
+            "value": 1046.0
+          },
+          {
+            "core_id": 10,
+            "value": 1045.5
+          },
+          {
+            "core_id": 11,
+            "value": 1045.6
+          }
+        ],
+        "l3_global_mb": 42.43
+      },
+      "mem": 42.5,
+      "mem_mb": 6962.0,
+      "disk_r": 0.31,
+      "disk_w": 0.39,
+      "net_s": 0.11,
+      "net_r": 0.13,
+      "gpu_util": 0,
+      "gpu_vram": 0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 27.5,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 1.2,
+          "vram": 52.0,
+          "vram_total": 24576,
+          "temp": 27.9
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 3.7,
+          "vram": 19.0,
+          "vram_total": 16384,
+          "temp": 27.8
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 3.9,
+          "vram": 57.0,
+          "vram_total": 12288,
+          "temp": 27.6
+        }
+      ]
+    },
+    {
+      "t": 4.0,
+      "clock": "13:45:04",
+      "step": "extract",
+      "active_event_ids": [],
+      "cpu": 57.5,
+      "cpu_temp": 61.9,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 56.6,
+          "temp": 64.0
+        },
+        {
+          "core_id": 1,
+          "util": 62.0,
+          "temp": 66.5
+        },
+        {
+          "core_id": 2,
+          "util": 53.4,
+          "temp": 61.3
+        },
+        {
+          "core_id": 3,
+          "util": 61.8,
+          "temp": 66.1
+        },
+        {
+          "core_id": 4,
+          "util": 55.5,
+          "temp": 61.5
+        },
+        {
+          "core_id": 5,
+          "util": 61.8,
+          "temp": 67.7
+        },
+        {
+          "core_id": 6,
+          "util": 56.5,
+          "temp": 62.4
+        },
+        {
+          "core_id": 7,
+          "util": 59.8,
+          "temp": 63.9
+        },
+        {
+          "core_id": 8,
+          "util": 59.1,
+          "temp": 64.6
+        },
+        {
+          "core_id": 9,
+          "util": 52.6,
+          "temp": 61.6
+        },
+        {
+          "core_id": 10,
+          "util": 57.2,
+          "temp": 63.2
+        },
+        {
+          "core_id": 11,
+          "util": 55.6,
+          "temp": 62.4
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 72.5
+          },
+          {
+            "core_id": 1,
+            "value": 73.3
+          },
+          {
+            "core_id": 2,
+            "value": 72.0
+          },
+          {
+            "core_id": 3,
+            "value": 73.3
+          },
+          {
+            "core_id": 4,
+            "value": 72.3
+          },
+          {
+            "core_id": 5,
+            "value": 73.3
+          },
+          {
+            "core_id": 6,
+            "value": 72.5
+          },
+          {
+            "core_id": 7,
+            "value": 73.0
+          },
+          {
+            "core_id": 8,
+            "value": 72.9
+          },
+          {
+            "core_id": 9,
+            "value": 71.9
+          },
+          {
+            "core_id": 10,
+            "value": 72.6
+          },
+          {
+            "core_id": 11,
+            "value": 72.3
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1049.5
+          },
+          {
+            "core_id": 1,
+            "value": 1051.9
+          },
+          {
+            "core_id": 2,
+            "value": 1048.0
+          },
+          {
+            "core_id": 3,
+            "value": 1051.8
+          },
+          {
+            "core_id": 4,
+            "value": 1049.0
+          },
+          {
+            "core_id": 5,
+            "value": 1051.8
+          },
+          {
+            "core_id": 6,
+            "value": 1049.4
+          },
+          {
+            "core_id": 7,
+            "value": 1050.9
+          },
+          {
+            "core_id": 8,
+            "value": 1050.6
+          },
+          {
+            "core_id": 9,
+            "value": 1047.7
+          },
+          {
+            "core_id": 10,
+            "value": 1049.7
+          },
+          {
+            "core_id": 11,
+            "value": 1049.0
+          }
+        ],
+        "l3_global_mb": 43.24
+      },
+      "mem": 46.6,
+      "mem_mb": 7641.0,
+      "disk_r": 0.36,
+      "disk_w": 0.46,
+      "net_s": 0.11,
+      "net_r": 0.14,
+      "gpu_util": 0,
+      "gpu_vram": 11.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 27.0,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 1.9,
+          "vram": 46.0,
+          "vram_total": 24576,
+          "temp": 28.0
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 0,
+          "vram": 0,
+          "vram_total": 16384,
+          "temp": 26.1
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 3.9,
+          "vram": 0,
+          "vram_total": 12288,
+          "temp": 29.3
+        }
+      ]
+    },
+    {
+      "t": 4.4,
+      "clock": "13:45:04",
+      "step": "inference",
+      "active_event_ids": [
+        "E003"
+      ],
+      "cpu": 52.1,
+      "cpu_temp": 60.1,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 33.1,
+          "temp": 48.6
+        },
+        {
+          "core_id": 1,
+          "util": 28.5,
+          "temp": 44.0
+        },
+        {
+          "core_id": 2,
+          "util": 33.6,
+          "temp": 47.5
+        },
+        {
+          "core_id": 3,
+          "util": 30.1,
+          "temp": 47.2
+        },
+        {
+          "core_id": 4,
+          "util": 29.7,
+          "temp": 44.7
+        },
+        {
+          "core_id": 5,
+          "util": 27.0,
+          "temp": 43.0
+        },
+        {
+          "core_id": 6,
+          "util": 63.4,
+          "temp": 68.3
+        },
+        {
+          "core_id": 7,
+          "util": 64.6,
+          "temp": 69.2
+        },
+        {
+          "core_id": 8,
+          "util": 66.9,
+          "temp": 69.5
+        },
+        {
+          "core_id": 9,
+          "util": 61.4,
+          "temp": 64.5
+        },
+        {
+          "core_id": 10,
+          "util": 90.3,
+          "temp": 83.1
+        },
+        {
+          "core_id": 11,
+          "util": 96.3,
+          "temp": 89.3
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 69.0
+          },
+          {
+            "core_id": 1,
+            "value": 68.3
+          },
+          {
+            "core_id": 2,
+            "value": 69.0
+          },
+          {
+            "core_id": 3,
+            "value": 68.5
+          },
+          {
+            "core_id": 4,
+            "value": 68.5
+          },
+          {
+            "core_id": 5,
+            "value": 68.0
+          },
+          {
+            "core_id": 6,
+            "value": 73.5
+          },
+          {
+            "core_id": 7,
+            "value": 73.7
+          },
+          {
+            "core_id": 8,
+            "value": 74.0
+          },
+          {
+            "core_id": 9,
+            "value": 73.2
+          },
+          {
+            "core_id": 10,
+            "value": 77.5
+          },
+          {
+            "core_id": 11,
+            "value": 78.4
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1038.9
+          },
+          {
+            "core_id": 1,
+            "value": 1036.8
+          },
+          {
+            "core_id": 2,
+            "value": 1039.1
+          },
+          {
+            "core_id": 3,
+            "value": 1037.5
+          },
+          {
+            "core_id": 4,
+            "value": 1037.4
+          },
+          {
+            "core_id": 5,
+            "value": 1036.2
+          },
+          {
+            "core_id": 6,
+            "value": 1052.5
+          },
+          {
+            "core_id": 7,
+            "value": 1053.1
+          },
+          {
+            "core_id": 8,
+            "value": 1054.1
+          },
+          {
+            "core_id": 9,
+            "value": 1051.6
+          },
+          {
+            "core_id": 10,
+            "value": 1064.6
+          },
+          {
+            "core_id": 11,
+            "value": 1067.3
+          }
+        ],
+        "l3_global_mb": 42.56
+      },
+      "mem": 46.4,
+      "mem_mb": 7604.0,
+      "disk_r": 0.37,
+      "disk_w": 0.46,
+      "net_s": 0.12,
+      "net_r": 0.15,
+      "gpu_util": 4.3,
+      "gpu_vram": 416.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 30.6,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 1.1,
+          "vram": 166.0,
+          "vram_total": 24576,
+          "temp": 27.7
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 0.7,
+          "vram": 195.0,
+          "vram_total": 16384,
+          "temp": 25
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 4.2,
+          "vram": 117.0,
+          "vram_total": 12288,
+          "temp": 26.9
+        }
+      ]
+    },
+    {
+      "t": 4.8,
+      "clock": "13:45:04",
+      "step": "inference",
+      "active_event_ids": [
+        "E003"
+      ],
+      "cpu": 50.5,
+      "cpu_temp": 58.3,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 25.5,
+          "temp": 43.4
+        },
+        {
+          "core_id": 1,
+          "util": 32.8,
+          "temp": 48.9
+        },
+        {
+          "core_id": 2,
+          "util": 29.1,
+          "temp": 47.9
+        },
+        {
+          "core_id": 3,
+          "util": 27.9,
+          "temp": 44.6
+        },
+        {
+          "core_id": 4,
+          "util": 30.1,
+          "temp": 45.3
+        },
+        {
+          "core_id": 5,
+          "util": 33.7,
+          "temp": 49.1
+        },
+        {
+          "core_id": 6,
+          "util": 55.8,
+          "temp": 61.0
+        },
+        {
+          "core_id": 7,
+          "util": 65.5,
+          "temp": 69.5
+        },
+        {
+          "core_id": 8,
+          "util": 57.5,
+          "temp": 63.8
+        },
+        {
+          "core_id": 9,
+          "util": 61.6,
+          "temp": 64.2
+        },
+        {
+          "core_id": 10,
+          "util": 92.2,
+          "temp": 84.0
+        },
+        {
+          "core_id": 11,
+          "util": 92.8,
+          "temp": 84.1
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 67.8
+          },
+          {
+            "core_id": 1,
+            "value": 68.9
+          },
+          {
+            "core_id": 2,
+            "value": 68.4
+          },
+          {
+            "core_id": 3,
+            "value": 68.2
+          },
+          {
+            "core_id": 4,
+            "value": 68.5
+          },
+          {
+            "core_id": 5,
+            "value": 69.1
+          },
+          {
+            "core_id": 6,
+            "value": 72.4
+          },
+          {
+            "core_id": 7,
+            "value": 73.8
+          },
+          {
+            "core_id": 8,
+            "value": 72.6
+          },
+          {
+            "core_id": 9,
+            "value": 73.2
+          },
+          {
+            "core_id": 10,
+            "value": 77.8
+          },
+          {
+            "core_id": 11,
+            "value": 77.9
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1035.5
+          },
+          {
+            "core_id": 1,
+            "value": 1038.8
+          },
+          {
+            "core_id": 2,
+            "value": 1037.1
+          },
+          {
+            "core_id": 3,
+            "value": 1036.6
+          },
+          {
+            "core_id": 4,
+            "value": 1037.5
+          },
+          {
+            "core_id": 5,
+            "value": 1039.2
+          },
+          {
+            "core_id": 6,
+            "value": 1049.1
+          },
+          {
+            "core_id": 7,
+            "value": 1053.5
+          },
+          {
+            "core_id": 8,
+            "value": 1049.9
+          },
+          {
+            "core_id": 9,
+            "value": 1051.7
+          },
+          {
+            "core_id": 10,
+            "value": 1065.5
+          },
+          {
+            "core_id": 11,
+            "value": 1065.8
+          }
+        ],
+        "l3_global_mb": 42.37
+      },
+      "mem": 45.0,
+      "mem_mb": 7367.0,
+      "disk_r": 0.38,
+      "disk_w": 0.48,
+      "net_s": 0.12,
+      "net_r": 0.16,
+      "gpu_util": 15.3,
+      "gpu_vram": 1146.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 36.1,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 14.8,
+          "vram": 282.0,
+          "vram_total": 24576,
+          "temp": 34.0
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 12.9,
+          "vram": 320.0,
+          "vram_total": 16384,
+          "temp": 33.9
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 14.6,
+          "vram": 456.0,
+          "vram_total": 12288,
+          "temp": 33.0
+        }
+      ]
+    },
+    {
+      "t": 5.2,
+      "clock": "13:45:05",
+      "step": "inference",
+      "active_event_ids": [
+        "E003",
+        "E004"
+      ],
+      "cpu": 50.9,
+      "cpu_temp": 57.1,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 14.2,
+          "temp": 37.2
+        },
+        {
+          "core_id": 1,
+          "util": 19.2,
+          "temp": 38.6
+        },
+        {
+          "core_id": 2,
+          "util": 20.3,
+          "temp": 40.8
+        },
+        {
+          "core_id": 3,
+          "util": 20.1,
+          "temp": 41.7
+        },
+        {
+          "core_id": 4,
+          "util": 33.0,
+          "temp": 49.9
+        },
+        {
+          "core_id": 5,
+          "util": 29.7,
+          "temp": 47.5
+        },
+        {
+          "core_id": 6,
+          "util": 65.6,
+          "temp": 69.6
+        },
+        {
+          "core_id": 7,
+          "util": 63.2,
+          "temp": 68.3
+        },
+        {
+          "core_id": 8,
+          "util": 74.1,
+          "temp": 72.3
+        },
+        {
+          "core_id": 9,
+          "util": 72.5,
+          "temp": 75.0
+        },
+        {
+          "core_id": 10,
+          "util": 100,
+          "temp": 89.1
+        },
+        {
+          "core_id": 11,
+          "util": 97.6,
+          "temp": 90.0
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 66.1
+          },
+          {
+            "core_id": 1,
+            "value": 66.9
+          },
+          {
+            "core_id": 2,
+            "value": 67.0
+          },
+          {
+            "core_id": 3,
+            "value": 67.0
+          },
+          {
+            "core_id": 4,
+            "value": 69.0
+          },
+          {
+            "core_id": 5,
+            "value": 68.5
+          },
+          {
+            "core_id": 6,
+            "value": 73.8
+          },
+          {
+            "core_id": 7,
+            "value": 73.5
+          },
+          {
+            "core_id": 8,
+            "value": 75.1
+          },
+          {
+            "core_id": 9,
+            "value": 74.9
+          },
+          {
+            "core_id": 10,
+            "value": 79.0
+          },
+          {
+            "core_id": 11,
+            "value": 78.6
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1030.4
+          },
+          {
+            "core_id": 1,
+            "value": 1032.6
+          },
+          {
+            "core_id": 2,
+            "value": 1033.1
+          },
+          {
+            "core_id": 3,
+            "value": 1033.0
+          },
+          {
+            "core_id": 4,
+            "value": 1038.8
+          },
+          {
+            "core_id": 5,
+            "value": 1037.4
+          },
+          {
+            "core_id": 6,
+            "value": 1053.5
+          },
+          {
+            "core_id": 7,
+            "value": 1052.4
+          },
+          {
+            "core_id": 8,
+            "value": 1057.3
+          },
+          {
+            "core_id": 9,
+            "value": 1056.6
+          },
+          {
+            "core_id": 10,
+            "value": 1069.0
+          },
+          {
+            "core_id": 11,
+            "value": 1067.9
+          }
+        ],
+        "l3_global_mb": 42.42
+      },
+      "mem": 44.7,
+      "mem_mb": 7327.0,
+      "disk_r": 0.39,
+      "disk_w": 0.49,
+      "net_s": 0.12,
+      "net_r": 0.16,
+      "gpu_util": 30.8,
+      "gpu_vram": 2177.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 44.0,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 14.9,
+          "vram": 422.0,
+          "vram_total": 24576,
+          "temp": 33.1
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 23.4,
+          "vram": 606.0,
+          "vram_total": 16384,
+          "temp": 40.9
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 54.1,
+          "vram": 1281.0,
+          "vram_total": 12288,
+          "temp": 57.2
+        }
+      ]
+    },
+    {
+      "t": 5.6,
+      "clock": "13:45:05",
+      "step": "inference",
+      "active_event_ids": [
+        "E004"
+      ],
+      "cpu": 48.2,
+      "cpu_temp": 57.0,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 13.6,
+          "temp": 36.2
+        },
+        {
+          "core_id": 1,
+          "util": 16.7,
+          "temp": 39.5
+        },
+        {
+          "core_id": 2,
+          "util": 17.7,
+          "temp": 38.6
+        },
+        {
+          "core_id": 3,
+          "util": 16.5,
+          "temp": 36.8
+        },
+        {
+          "core_id": 4,
+          "util": 28.8,
+          "temp": 45.7
+        },
+        {
+          "core_id": 5,
+          "util": 25.1,
+          "temp": 43.7
+        },
+        {
+          "core_id": 6,
+          "util": 58.3,
+          "temp": 66.2
+        },
+        {
+          "core_id": 7,
+          "util": 61.1,
+          "temp": 67.8
+        },
+        {
+          "core_id": 8,
+          "util": 73.0,
+          "temp": 72.4
+        },
+        {
+          "core_id": 9,
+          "util": 75.2,
+          "temp": 75.3
+        },
+        {
+          "core_id": 10,
+          "util": 98.1,
+          "temp": 86.9
+        },
+        {
+          "core_id": 11,
+          "util": 100,
+          "temp": 90.4
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 66.0
+          },
+          {
+            "core_id": 1,
+            "value": 66.5
+          },
+          {
+            "core_id": 2,
+            "value": 66.7
+          },
+          {
+            "core_id": 3,
+            "value": 66.5
+          },
+          {
+            "core_id": 4,
+            "value": 68.3
+          },
+          {
+            "core_id": 5,
+            "value": 67.8
+          },
+          {
+            "core_id": 6,
+            "value": 72.7
+          },
+          {
+            "core_id": 7,
+            "value": 73.2
+          },
+          {
+            "core_id": 8,
+            "value": 75.0
+          },
+          {
+            "core_id": 9,
+            "value": 75.3
+          },
+          {
+            "core_id": 10,
+            "value": 78.7
+          },
+          {
+            "core_id": 11,
+            "value": 79.0
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1030.1
+          },
+          {
+            "core_id": 1,
+            "value": 1031.5
+          },
+          {
+            "core_id": 2,
+            "value": 1032.0
+          },
+          {
+            "core_id": 3,
+            "value": 1031.4
+          },
+          {
+            "core_id": 4,
+            "value": 1037.0
+          },
+          {
+            "core_id": 5,
+            "value": 1035.3
+          },
+          {
+            "core_id": 6,
+            "value": 1050.2
+          },
+          {
+            "core_id": 7,
+            "value": 1051.5
+          },
+          {
+            "core_id": 8,
+            "value": 1056.8
+          },
+          {
+            "core_id": 9,
+            "value": 1057.8
+          },
+          {
+            "core_id": 10,
+            "value": 1068.1
+          },
+          {
+            "core_id": 11,
+            "value": 1069.0
+          }
+        ],
+        "l3_global_mb": 42.08
+      },
+      "mem": 44.3,
+      "mem_mb": 7253.0,
+      "disk_r": 0.4,
+      "disk_w": 0.5,
+      "net_s": 0.13,
+      "net_r": 0.17,
+      "gpu_util": 39.2,
+      "gpu_vram": 2921.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 49.3,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 8.7,
+          "vram": 193.0,
+          "vram_total": 24576,
+          "temp": 32.6
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 26.9,
+          "vram": 690.0,
+          "vram_total": 16384,
+          "temp": 41.0
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 80.3,
+          "vram": 1973.0,
+          "vram_total": 12288,
+          "temp": 72.5
+        }
+      ]
+    },
+    {
+      "t": 6.0,
+      "clock": "13:45:06",
+      "step": "inference",
+      "active_event_ids": [
+        "E004",
+        "E005"
+      ],
+      "cpu": 49.0,
+      "cpu_temp": 57.1,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 16.4,
+          "temp": 39.0
+        },
+        {
+          "core_id": 1,
+          "util": 24.2,
+          "temp": 42.7
+        },
+        {
+          "core_id": 2,
+          "util": 20.4,
+          "temp": 42.8
+        },
+        {
+          "core_id": 3,
+          "util": 22.2,
+          "temp": 42.1
+        },
+        {
+          "core_id": 4,
+          "util": 36.9,
+          "temp": 53.0
+        },
+        {
+          "core_id": 5,
+          "util": 33.2,
+          "temp": 50.0
+        },
+        {
+          "core_id": 6,
+          "util": 59.1,
+          "temp": 66.7
+        },
+        {
+          "core_id": 7,
+          "util": 57.3,
+          "temp": 65.7
+        },
+        {
+          "core_id": 8,
+          "util": 72.5,
+          "temp": 73.2
+        },
+        {
+          "core_id": 9,
+          "util": 71.0,
+          "temp": 70.9
+        },
+        {
+          "core_id": 10,
+          "util": 99.1,
+          "temp": 88.1
+        },
+        {
+          "core_id": 11,
+          "util": 96.2,
+          "temp": 86.5
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 66.5
+          },
+          {
+            "core_id": 1,
+            "value": 67.6
+          },
+          {
+            "core_id": 2,
+            "value": 67.1
+          },
+          {
+            "core_id": 3,
+            "value": 67.3
+          },
+          {
+            "core_id": 4,
+            "value": 69.5
+          },
+          {
+            "core_id": 5,
+            "value": 69.0
+          },
+          {
+            "core_id": 6,
+            "value": 72.9
+          },
+          {
+            "core_id": 7,
+            "value": 72.6
+          },
+          {
+            "core_id": 8,
+            "value": 74.9
+          },
+          {
+            "core_id": 9,
+            "value": 74.7
+          },
+          {
+            "core_id": 10,
+            "value": 78.9
+          },
+          {
+            "core_id": 11,
+            "value": 78.4
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1031.4
+          },
+          {
+            "core_id": 1,
+            "value": 1034.9
+          },
+          {
+            "core_id": 2,
+            "value": 1033.2
+          },
+          {
+            "core_id": 3,
+            "value": 1034.0
+          },
+          {
+            "core_id": 4,
+            "value": 1040.6
+          },
+          {
+            "core_id": 5,
+            "value": 1038.9
+          },
+          {
+            "core_id": 6,
+            "value": 1050.6
+          },
+          {
+            "core_id": 7,
+            "value": 1049.8
+          },
+          {
+            "core_id": 8,
+            "value": 1056.6
+          },
+          {
+            "core_id": 9,
+            "value": 1056.0
+          },
+          {
+            "core_id": 10,
+            "value": 1068.6
+          },
+          {
+            "core_id": 11,
+            "value": 1067.3
+          }
+        ],
+        "l3_global_mb": 42.17
+      },
+      "mem": 43.1,
+      "mem_mb": 7067.0,
+      "disk_r": 0.42,
+      "disk_w": 0.51,
+      "net_s": 0.13,
+      "net_r": 0.17,
+      "gpu_util": 46.5,
+      "gpu_vram": 3463.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 53.7,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 22.2,
+          "vram": 595.0,
+          "vram_total": 24576,
+          "temp": 37.7
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 38.9,
+          "vram": 949.0,
+          "vram_total": 16384,
+          "temp": 49.1
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 75.2,
+          "vram": 1911.0,
+          "vram_total": 12288,
+          "temp": 71.2
+        }
+      ]
+    },
+    {
+      "t": 6.4,
+      "clock": "13:45:06",
+      "step": "inference",
+      "active_event_ids": [
+        "E004",
+        "E005"
+      ],
+      "cpu": 47.9,
+      "cpu_temp": 57.3,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 19.7,
+          "temp": 40.7
+        },
+        {
+          "core_id": 1,
+          "util": 18.0,
+          "temp": 39.8
+        },
+        {
+          "core_id": 2,
+          "util": 17.8,
+          "temp": 38.2
+        },
+        {
+          "core_id": 3,
+          "util": 27.5,
+          "temp": 45.0
+        },
+        {
+          "core_id": 4,
+          "util": 33.6,
+          "temp": 48.2
+        },
+        {
+          "core_id": 5,
+          "util": 36.4,
+          "temp": 48.8
+        },
+        {
+          "core_id": 6,
+          "util": 55.1,
+          "temp": 61.4
+        },
+        {
+          "core_id": 7,
+          "util": 52.6,
+          "temp": 58.5
+        },
+        {
+          "core_id": 8,
+          "util": 65.7,
+          "temp": 67.8
+        },
+        {
+          "core_id": 9,
+          "util": 61.7,
+          "temp": 67.6
+        },
+        {
+          "core_id": 10,
+          "util": 87.7,
+          "temp": 84.6
+        },
+        {
+          "core_id": 11,
+          "util": 87.4,
+          "temp": 82.1
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 67.0
+          },
+          {
+            "core_id": 1,
+            "value": 66.7
+          },
+          {
+            "core_id": 2,
+            "value": 66.7
+          },
+          {
+            "core_id": 3,
+            "value": 68.1
+          },
+          {
+            "core_id": 4,
+            "value": 69.0
+          },
+          {
+            "core_id": 5,
+            "value": 69.5
+          },
+          {
+            "core_id": 6,
+            "value": 72.3
+          },
+          {
+            "core_id": 7,
+            "value": 71.9
+          },
+          {
+            "core_id": 8,
+            "value": 73.9
+          },
+          {
+            "core_id": 9,
+            "value": 73.3
+          },
+          {
+            "core_id": 10,
+            "value": 77.2
+          },
+          {
+            "core_id": 11,
+            "value": 77.1
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1032.9
+          },
+          {
+            "core_id": 1,
+            "value": 1032.1
+          },
+          {
+            "core_id": 2,
+            "value": 1032.0
+          },
+          {
+            "core_id": 3,
+            "value": 1036.4
+          },
+          {
+            "core_id": 4,
+            "value": 1039.1
+          },
+          {
+            "core_id": 5,
+            "value": 1040.4
+          },
+          {
+            "core_id": 6,
+            "value": 1048.8
+          },
+          {
+            "core_id": 7,
+            "value": 1047.7
+          },
+          {
+            "core_id": 8,
+            "value": 1053.6
+          },
+          {
+            "core_id": 9,
+            "value": 1051.8
+          },
+          {
+            "core_id": 10,
+            "value": 1063.5
+          },
+          {
+            "core_id": 11,
+            "value": 1063.3
+          }
+        ],
+        "l3_global_mb": 42.04
+      },
+      "mem": 43.5,
+      "mem_mb": 7124.0,
+      "disk_r": 0.43,
+      "disk_w": 0.53,
+      "net_s": 0.14,
+      "net_r": 0.17,
+      "gpu_util": 51.5,
+      "gpu_vram": 3847.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 55.7,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 28.1,
+          "vram": 679.0,
+          "vram_total": 24576,
+          "temp": 41.3
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 40.6,
+          "vram": 1084.0,
+          "vram_total": 16384,
+          "temp": 51.4
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 82.8,
+          "vram": 2121.0,
+          "vram_total": 12288,
+          "temp": 74.5
+        }
+      ]
+    },
+    {
+      "t": 6.8,
+      "clock": "13:45:06",
+      "step": "inference",
+      "active_event_ids": [
+        "E004",
+        "E005"
+      ],
+      "cpu": 45.0,
+      "cpu_temp": 56.4,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 27.2,
+          "temp": 46.1
+        },
+        {
+          "core_id": 1,
+          "util": 18.9,
+          "temp": 41.5
+        },
+        {
+          "core_id": 2,
+          "util": 21.0,
+          "temp": 38.9
+        },
+        {
+          "core_id": 3,
+          "util": 28.3,
+          "temp": 46.7
+        },
+        {
+          "core_id": 4,
+          "util": 35.0,
+          "temp": 49.7
+        },
+        {
+          "core_id": 5,
+          "util": 31.5,
+          "temp": 46.1
+        },
+        {
+          "core_id": 6,
+          "util": 55.9,
+          "temp": 61.0
+        },
+        {
+          "core_id": 7,
+          "util": 53.2,
+          "temp": 59.5
+        },
+        {
+          "core_id": 8,
+          "util": 56.4,
+          "temp": 62.7
+        },
+        {
+          "core_id": 9,
+          "util": 62.9,
+          "temp": 67.3
+        },
+        {
+          "core_id": 10,
+          "util": 79.6,
+          "temp": 77.5
+        },
+        {
+          "core_id": 11,
+          "util": 76.2,
+          "temp": 75.1
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 68.1
+          },
+          {
+            "core_id": 1,
+            "value": 66.8
+          },
+          {
+            "core_id": 2,
+            "value": 67.2
+          },
+          {
+            "core_id": 3,
+            "value": 68.2
+          },
+          {
+            "core_id": 4,
+            "value": 69.2
+          },
+          {
+            "core_id": 5,
+            "value": 68.7
+          },
+          {
+            "core_id": 6,
+            "value": 72.4
+          },
+          {
+            "core_id": 7,
+            "value": 72.0
+          },
+          {
+            "core_id": 8,
+            "value": 72.5
+          },
+          {
+            "core_id": 9,
+            "value": 73.4
+          },
+          {
+            "core_id": 10,
+            "value": 75.9
+          },
+          {
+            "core_id": 11,
+            "value": 75.4
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1036.2
+          },
+          {
+            "core_id": 1,
+            "value": 1032.5
+          },
+          {
+            "core_id": 2,
+            "value": 1033.5
+          },
+          {
+            "core_id": 3,
+            "value": 1036.7
+          },
+          {
+            "core_id": 4,
+            "value": 1039.8
+          },
+          {
+            "core_id": 5,
+            "value": 1038.2
+          },
+          {
+            "core_id": 6,
+            "value": 1049.2
+          },
+          {
+            "core_id": 7,
+            "value": 1047.9
+          },
+          {
+            "core_id": 8,
+            "value": 1049.4
+          },
+          {
+            "core_id": 9,
+            "value": 1052.3
+          },
+          {
+            "core_id": 10,
+            "value": 1059.8
+          },
+          {
+            "core_id": 11,
+            "value": 1058.3
+          }
+        ],
+        "l3_global_mb": 41.67
+      },
+      "mem": 44.3,
+      "mem_mb": 7260.0,
+      "disk_r": 0.44,
+      "disk_w": 0.55,
+      "net_s": 0.15,
+      "net_r": 0.18,
+      "gpu_util": 55.5,
+      "gpu_vram": 4127.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 57.7,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 23.1,
+          "vram": 695.0,
+          "vram_total": 24576,
+          "temp": 40.5
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 50.3,
+          "vram": 1135.0,
+          "vram_total": 16384,
+          "temp": 56.9
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 91.2,
+          "vram": 2353.0,
+          "vram_total": 12288,
+          "temp": 77.8
+        }
+      ]
+    },
+    {
+      "t": 7.2,
+      "clock": "13:45:07",
+      "step": "inference",
+      "active_event_ids": [
+        "E004",
+        "E005"
+      ],
+      "cpu": 43.4,
+      "cpu_temp": 56.3,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 27.1,
+          "temp": 44.3
+        },
+        {
+          "core_id": 1,
+          "util": 24.8,
+          "temp": 44.0
+        },
+        {
+          "core_id": 2,
+          "util": 21.4,
+          "temp": 43.1
+        },
+        {
+          "core_id": 3,
+          "util": 21.9,
+          "temp": 40.2
+        },
+        {
+          "core_id": 4,
+          "util": 35.8,
+          "temp": 51.1
+        },
+        {
+          "core_id": 5,
+          "util": 37.0,
+          "temp": 50.3
+        },
+        {
+          "core_id": 6,
+          "util": 52.2,
+          "temp": 62.2
+        },
+        {
+          "core_id": 7,
+          "util": 44.9,
+          "temp": 57.1
+        },
+        {
+          "core_id": 8,
+          "util": 53.6,
+          "temp": 59.1
+        },
+        {
+          "core_id": 9,
+          "util": 51.8,
+          "temp": 58.0
+        },
+        {
+          "core_id": 10,
+          "util": 74.2,
+          "temp": 75.9
+        },
+        {
+          "core_id": 11,
+          "util": 74.3,
+          "temp": 76.1
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 68.1
+          },
+          {
+            "core_id": 1,
+            "value": 67.7
+          },
+          {
+            "core_id": 2,
+            "value": 67.2
+          },
+          {
+            "core_id": 3,
+            "value": 67.3
+          },
+          {
+            "core_id": 4,
+            "value": 69.4
+          },
+          {
+            "core_id": 5,
+            "value": 69.5
+          },
+          {
+            "core_id": 6,
+            "value": 71.8
+          },
+          {
+            "core_id": 7,
+            "value": 70.7
+          },
+          {
+            "core_id": 8,
+            "value": 72.0
+          },
+          {
+            "core_id": 9,
+            "value": 71.8
+          },
+          {
+            "core_id": 10,
+            "value": 75.1
+          },
+          {
+            "core_id": 11,
+            "value": 75.1
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1036.2
+          },
+          {
+            "core_id": 1,
+            "value": 1035.2
+          },
+          {
+            "core_id": 2,
+            "value": 1033.6
+          },
+          {
+            "core_id": 3,
+            "value": 1033.9
+          },
+          {
+            "core_id": 4,
+            "value": 1040.1
+          },
+          {
+            "core_id": 5,
+            "value": 1040.7
+          },
+          {
+            "core_id": 6,
+            "value": 1047.5
+          },
+          {
+            "core_id": 7,
+            "value": 1044.2
+          },
+          {
+            "core_id": 8,
+            "value": 1048.1
+          },
+          {
+            "core_id": 9,
+            "value": 1047.3
+          },
+          {
+            "core_id": 10,
+            "value": 1057.4
+          },
+          {
+            "core_id": 11,
+            "value": 1057.4
+          }
+        ],
+        "l3_global_mb": 41.46
+      },
+      "mem": 43.7,
+      "mem_mb": 7156.0,
+      "disk_r": 0.46,
+      "disk_w": 0.55,
+      "net_s": 0.15,
+      "net_r": 0.18,
+      "gpu_util": 59.3,
+      "gpu_vram": 4283.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 58.4,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 31.5,
+          "vram": 750.0,
+          "vram_total": 24576,
+          "temp": 45.3
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 50.8,
+          "vram": 1187.0,
+          "vram_total": 16384,
+          "temp": 53.8
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 96.9,
+          "vram": 2389.0,
+          "vram_total": 12288,
+          "temp": 83.4
+        }
+      ]
+    },
+    {
+      "t": 7.6,
+      "clock": "13:45:07",
+      "step": "inference",
+      "active_event_ids": [
+        "E005"
+      ],
+      "cpu": 45.7,
+      "cpu_temp": 58.6,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 37.2,
+          "temp": 50.0
+        },
+        {
+          "core_id": 1,
+          "util": 41.0,
+          "temp": 55.1
+        },
+        {
+          "core_id": 2,
+          "util": 33.0,
+          "temp": 48.8
+        },
+        {
+          "core_id": 3,
+          "util": 37.1,
+          "temp": 49.7
+        },
+        {
+          "core_id": 4,
+          "util": 34.4,
+          "temp": 49.8
+        },
+        {
+          "core_id": 5,
+          "util": 39.5,
+          "temp": 50.5
+        },
+        {
+          "core_id": 6,
+          "util": 49.7,
+          "temp": 57.5
+        },
+        {
+          "core_id": 7,
+          "util": 52.7,
+          "temp": 59.0
+        },
+        {
+          "core_id": 8,
+          "util": 54.2,
+          "temp": 61.3
+        },
+        {
+          "core_id": 9,
+          "util": 46.5,
+          "temp": 57.0
+        },
+        {
+          "core_id": 10,
+          "util": 61.3,
+          "temp": 65.4
+        },
+        {
+          "core_id": 11,
+          "util": 60.8,
+          "temp": 66.4
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 69.6
+          },
+          {
+            "core_id": 1,
+            "value": 70.2
+          },
+          {
+            "core_id": 2,
+            "value": 69.0
+          },
+          {
+            "core_id": 3,
+            "value": 69.6
+          },
+          {
+            "core_id": 4,
+            "value": 69.2
+          },
+          {
+            "core_id": 5,
+            "value": 69.9
+          },
+          {
+            "core_id": 6,
+            "value": 71.5
+          },
+          {
+            "core_id": 7,
+            "value": 71.9
+          },
+          {
+            "core_id": 8,
+            "value": 72.1
+          },
+          {
+            "core_id": 9,
+            "value": 71.0
+          },
+          {
+            "core_id": 10,
+            "value": 73.2
+          },
+          {
+            "core_id": 11,
+            "value": 73.1
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1040.7
+          },
+          {
+            "core_id": 1,
+            "value": 1042.5
+          },
+          {
+            "core_id": 2,
+            "value": 1038.8
+          },
+          {
+            "core_id": 3,
+            "value": 1040.7
+          },
+          {
+            "core_id": 4,
+            "value": 1039.5
+          },
+          {
+            "core_id": 5,
+            "value": 1041.8
+          },
+          {
+            "core_id": 6,
+            "value": 1046.4
+          },
+          {
+            "core_id": 7,
+            "value": 1047.7
+          },
+          {
+            "core_id": 8,
+            "value": 1048.4
+          },
+          {
+            "core_id": 9,
+            "value": 1044.9
+          },
+          {
+            "core_id": 10,
+            "value": 1051.6
+          },
+          {
+            "core_id": 11,
+            "value": 1051.4
+          }
+        ],
+        "l3_global_mb": 41.75
+      },
+      "mem": 43.6,
+      "mem_mb": 7140.0,
+      "disk_r": 0.46,
+      "disk_w": 0.57,
+      "net_s": 0.16,
+      "net_r": 0.19,
+      "gpu_util": 59.1,
+      "gpu_vram": 4301.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 59.2,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 43.4,
+          "vram": 1071.0,
+          "vram_total": 24576,
+          "temp": 49.5
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 57.9,
+          "vram": 1489.0,
+          "vram_total": 16384,
+          "temp": 59.2
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 73.9,
+          "vram": 1795.0,
+          "vram_total": 12288,
+          "temp": 67.1
+        }
+      ]
+    },
+    {
+      "t": 8.0,
+      "clock": "13:45:08",
+      "step": "inference",
+      "active_event_ids": [],
+      "cpu": 46.5,
+      "cpu_temp": 57.9,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 31.8,
+          "temp": 46.9
+        },
+        {
+          "core_id": 1,
+          "util": 26.0,
+          "temp": 43.0
+        },
+        {
+          "core_id": 2,
+          "util": 26.1,
+          "temp": 45.2
+        },
+        {
+          "core_id": 3,
+          "util": 25.4,
+          "temp": 41.5
+        },
+        {
+          "core_id": 4,
+          "util": 30.8,
+          "temp": 46.8
+        },
+        {
+          "core_id": 5,
+          "util": 32.4,
+          "temp": 47.7
+        },
+        {
+          "core_id": 6,
+          "util": 59.0,
+          "temp": 64.0
+        },
+        {
+          "core_id": 7,
+          "util": 52.3,
+          "temp": 62.3
+        },
+        {
+          "core_id": 8,
+          "util": 59.7,
+          "temp": 64.0
+        },
+        {
+          "core_id": 9,
+          "util": 58.5,
+          "temp": 65.9
+        },
+        {
+          "core_id": 10,
+          "util": 80.2,
+          "temp": 79.2
+        },
+        {
+          "core_id": 11,
+          "util": 79.6,
+          "temp": 79.2
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 68.8
+          },
+          {
+            "core_id": 1,
+            "value": 67.9
+          },
+          {
+            "core_id": 2,
+            "value": 67.9
+          },
+          {
+            "core_id": 3,
+            "value": 67.8
+          },
+          {
+            "core_id": 4,
+            "value": 68.6
+          },
+          {
+            "core_id": 5,
+            "value": 68.9
+          },
+          {
+            "core_id": 6,
+            "value": 72.8
+          },
+          {
+            "core_id": 7,
+            "value": 71.8
+          },
+          {
+            "core_id": 8,
+            "value": 73.0
+          },
+          {
+            "core_id": 9,
+            "value": 72.8
+          },
+          {
+            "core_id": 10,
+            "value": 76.0
+          },
+          {
+            "core_id": 11,
+            "value": 75.9
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1038.3
+          },
+          {
+            "core_id": 1,
+            "value": 1035.7
+          },
+          {
+            "core_id": 2,
+            "value": 1035.7
+          },
+          {
+            "core_id": 3,
+            "value": 1035.4
+          },
+          {
+            "core_id": 4,
+            "value": 1037.9
+          },
+          {
+            "core_id": 5,
+            "value": 1038.6
+          },
+          {
+            "core_id": 6,
+            "value": 1050.5
+          },
+          {
+            "core_id": 7,
+            "value": 1047.5
+          },
+          {
+            "core_id": 8,
+            "value": 1050.9
+          },
+          {
+            "core_id": 9,
+            "value": 1050.3
+          },
+          {
+            "core_id": 10,
+            "value": 1060.1
+          },
+          {
+            "core_id": 11,
+            "value": 1059.8
+          }
+        ],
+        "l3_global_mb": 41.86
+      },
+      "mem": 43.3,
+      "mem_mb": 7100.0,
+      "disk_r": 0.48,
+      "disk_w": 0.58,
+      "net_s": 0.16,
+      "net_r": 0.19,
+      "gpu_util": 57.5,
+      "gpu_vram": 4302.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 59.1,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 30.6,
+          "vram": 659.0,
+          "vram_total": 24576,
+          "temp": 43.8
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 60.8,
+          "vram": 1445.0,
+          "vram_total": 16384,
+          "temp": 61.1
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 86.0,
+          "vram": 2157.0,
+          "vram_total": 12288,
+          "temp": 77.3
+        }
+      ]
+    },
+    {
+      "t": 8.4,
+      "clock": "13:45:08",
+      "step": "inference",
+      "active_event_ids": [],
+      "cpu": 47.9,
+      "cpu_temp": 56.6,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 25.3,
+          "temp": 44.9
+        },
+        {
+          "core_id": 1,
+          "util": 26.5,
+          "temp": 45.4
+        },
+        {
+          "core_id": 2,
+          "util": 28.9,
+          "temp": 47.3
+        },
+        {
+          "core_id": 3,
+          "util": 32.8,
+          "temp": 48.6
+        },
+        {
+          "core_id": 4,
+          "util": 29.7,
+          "temp": 45.9
+        },
+        {
+          "core_id": 5,
+          "util": 26.8,
+          "temp": 45.2
+        },
+        {
+          "core_id": 6,
+          "util": 56.1,
+          "temp": 61.9
+        },
+        {
+          "core_id": 7,
+          "util": 57.5,
+          "temp": 65.1
+        },
+        {
+          "core_id": 8,
+          "util": 53.8,
+          "temp": 61.5
+        },
+        {
+          "core_id": 9,
+          "util": 59.2,
+          "temp": 65.6
+        },
+        {
+          "core_id": 10,
+          "util": 85.2,
+          "temp": 79.3
+        },
+        {
+          "core_id": 11,
+          "util": 89.8,
+          "temp": 84.0
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 67.8
+          },
+          {
+            "core_id": 1,
+            "value": 68.0
+          },
+          {
+            "core_id": 2,
+            "value": 68.3
+          },
+          {
+            "core_id": 3,
+            "value": 68.9
+          },
+          {
+            "core_id": 4,
+            "value": 68.5
+          },
+          {
+            "core_id": 5,
+            "value": 68.0
+          },
+          {
+            "core_id": 6,
+            "value": 72.4
+          },
+          {
+            "core_id": 7,
+            "value": 72.6
+          },
+          {
+            "core_id": 8,
+            "value": 72.1
+          },
+          {
+            "core_id": 9,
+            "value": 72.9
+          },
+          {
+            "core_id": 10,
+            "value": 76.8
+          },
+          {
+            "core_id": 11,
+            "value": 77.5
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1035.4
+          },
+          {
+            "core_id": 1,
+            "value": 1035.9
+          },
+          {
+            "core_id": 2,
+            "value": 1037.0
+          },
+          {
+            "core_id": 3,
+            "value": 1038.8
+          },
+          {
+            "core_id": 4,
+            "value": 1037.4
+          },
+          {
+            "core_id": 5,
+            "value": 1036.1
+          },
+          {
+            "core_id": 6,
+            "value": 1049.2
+          },
+          {
+            "core_id": 7,
+            "value": 1049.9
+          },
+          {
+            "core_id": 8,
+            "value": 1048.2
+          },
+          {
+            "core_id": 9,
+            "value": 1050.6
+          },
+          {
+            "core_id": 10,
+            "value": 1062.3
+          },
+          {
+            "core_id": 11,
+            "value": 1064.4
+          }
+        ],
+        "l3_global_mb": 42.03
+      },
+      "mem": 44.5,
+      "mem_mb": 7283.0,
+      "disk_r": 0.49,
+      "disk_w": 0.6,
+      "net_s": 0.17,
+      "net_r": 0.2,
+      "gpu_util": 58.5,
+      "gpu_vram": 4398.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 60.4,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 28.3,
+          "vram": 811.0,
+          "vram_total": 24576,
+          "temp": 40.9
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 56.6,
+          "vram": 1524.0,
+          "vram_total": 16384,
+          "temp": 57.8
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 84.5,
+          "vram": 2227.0,
+          "vram_total": 12288,
+          "temp": 75.5
+        }
+      ]
+    },
+    {
+      "t": 8.8,
+      "clock": "13:45:08",
+      "step": "inference",
+      "active_event_ids": [],
+      "cpu": 48.3,
+      "cpu_temp": 57.0,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 28.2,
+          "temp": 43.8
+        },
+        {
+          "core_id": 1,
+          "util": 25.2,
+          "temp": 41.9
+        },
+        {
+          "core_id": 2,
+          "util": 27.8,
+          "temp": 45.4
+        },
+        {
+          "core_id": 3,
+          "util": 25.0,
+          "temp": 42.5
+        },
+        {
+          "core_id": 4,
+          "util": 31.1,
+          "temp": 48.0
+        },
+        {
+          "core_id": 5,
+          "util": 29.3,
+          "temp": 44.9
+        },
+        {
+          "core_id": 6,
+          "util": 57.4,
+          "temp": 63.0
+        },
+        {
+          "core_id": 7,
+          "util": 60.9,
+          "temp": 67.6
+        },
+        {
+          "core_id": 8,
+          "util": 59.3,
+          "temp": 63.6
+        },
+        {
+          "core_id": 9,
+          "util": 55.2,
+          "temp": 62.1
+        },
+        {
+          "core_id": 10,
+          "util": 84.3,
+          "temp": 81.2
+        },
+        {
+          "core_id": 11,
+          "util": 86.9,
+          "temp": 83.3
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 68.2
+          },
+          {
+            "core_id": 1,
+            "value": 67.8
+          },
+          {
+            "core_id": 2,
+            "value": 68.2
+          },
+          {
+            "core_id": 3,
+            "value": 67.8
+          },
+          {
+            "core_id": 4,
+            "value": 68.7
+          },
+          {
+            "core_id": 5,
+            "value": 68.4
+          },
+          {
+            "core_id": 6,
+            "value": 72.6
+          },
+          {
+            "core_id": 7,
+            "value": 73.1
+          },
+          {
+            "core_id": 8,
+            "value": 72.9
+          },
+          {
+            "core_id": 9,
+            "value": 72.3
+          },
+          {
+            "core_id": 10,
+            "value": 76.6
+          },
+          {
+            "core_id": 11,
+            "value": 77.0
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1036.7
+          },
+          {
+            "core_id": 1,
+            "value": 1035.3
+          },
+          {
+            "core_id": 2,
+            "value": 1036.5
+          },
+          {
+            "core_id": 3,
+            "value": 1035.2
+          },
+          {
+            "core_id": 4,
+            "value": 1038.0
+          },
+          {
+            "core_id": 5,
+            "value": 1037.2
+          },
+          {
+            "core_id": 6,
+            "value": 1049.8
+          },
+          {
+            "core_id": 7,
+            "value": 1051.4
+          },
+          {
+            "core_id": 8,
+            "value": 1050.7
+          },
+          {
+            "core_id": 9,
+            "value": 1048.8
+          },
+          {
+            "core_id": 10,
+            "value": 1061.9
+          },
+          {
+            "core_id": 11,
+            "value": 1063.1
+          }
+        ],
+        "l3_global_mb": 42.09
+      },
+      "mem": 44.5,
+      "mem_mb": 7287.0,
+      "disk_r": 0.49,
+      "disk_w": 0.62,
+      "net_s": 0.17,
+      "net_r": 0.2,
+      "gpu_util": 59.7,
+      "gpu_vram": 4564.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 61.5,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 28.3,
+          "vram": 770.0,
+          "vram_total": 24576,
+          "temp": 42.1
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 57.7,
+          "vram": 1491.0,
+          "vram_total": 16384,
+          "temp": 58.6
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 86.0,
+          "vram": 2350.0,
+          "vram_total": 12288,
+          "temp": 77.8
+        }
+      ]
+    },
+    {
+      "t": 9.2,
+      "clock": "13:45:09",
+      "step": "inference",
+      "active_event_ids": [],
+      "cpu": 46.9,
+      "cpu_temp": 56.6,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 29.2,
+          "temp": 46.9
+        },
+        {
+          "core_id": 1,
+          "util": 24.4,
+          "temp": 44.1
+        },
+        {
+          "core_id": 2,
+          "util": 23.9,
+          "temp": 41.3
+        },
+        {
+          "core_id": 3,
+          "util": 30.8,
+          "temp": 48.8
+        },
+        {
+          "core_id": 4,
+          "util": 30.8,
+          "temp": 46.9
+        },
+        {
+          "core_id": 5,
+          "util": 25.9,
+          "temp": 45.9
+        },
+        {
+          "core_id": 6,
+          "util": 60.6,
+          "temp": 65.8
+        },
+        {
+          "core_id": 7,
+          "util": 54.6,
+          "temp": 61.1
+        },
+        {
+          "core_id": 8,
+          "util": 58.0,
+          "temp": 61.9
+        },
+        {
+          "core_id": 9,
+          "util": 56.8,
+          "temp": 62.7
+        },
+        {
+          "core_id": 10,
+          "util": 83.0,
+          "temp": 81.3
+        },
+        {
+          "core_id": 11,
+          "util": 86.0,
+          "temp": 81.2
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 68.4
+          },
+          {
+            "core_id": 1,
+            "value": 67.7
+          },
+          {
+            "core_id": 2,
+            "value": 67.6
+          },
+          {
+            "core_id": 3,
+            "value": 68.6
+          },
+          {
+            "core_id": 4,
+            "value": 68.6
+          },
+          {
+            "core_id": 5,
+            "value": 67.9
+          },
+          {
+            "core_id": 6,
+            "value": 73.1
+          },
+          {
+            "core_id": 7,
+            "value": 72.2
+          },
+          {
+            "core_id": 8,
+            "value": 72.7
+          },
+          {
+            "core_id": 9,
+            "value": 72.5
+          },
+          {
+            "core_id": 10,
+            "value": 76.5
+          },
+          {
+            "core_id": 11,
+            "value": 76.9
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1037.1
+          },
+          {
+            "core_id": 1,
+            "value": 1035.0
+          },
+          {
+            "core_id": 2,
+            "value": 1034.8
+          },
+          {
+            "core_id": 3,
+            "value": 1037.9
+          },
+          {
+            "core_id": 4,
+            "value": 1037.9
+          },
+          {
+            "core_id": 5,
+            "value": 1035.7
+          },
+          {
+            "core_id": 6,
+            "value": 1051.3
+          },
+          {
+            "core_id": 7,
+            "value": 1048.6
+          },
+          {
+            "core_id": 8,
+            "value": 1050.1
+          },
+          {
+            "core_id": 9,
+            "value": 1049.6
+          },
+          {
+            "core_id": 10,
+            "value": 1061.3
+          },
+          {
+            "core_id": 11,
+            "value": 1062.7
+          }
+        ],
+        "l3_global_mb": 41.91
+      },
+      "mem": 43.6,
+      "mem_mb": 7139.0,
+      "disk_r": 0.51,
+      "disk_w": 0.63,
+      "net_s": 0.17,
+      "net_r": 0.21,
+      "gpu_util": 61.9,
+      "gpu_vram": 4812.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 63.2,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 31.2,
+          "vram": 814.0,
+          "vram_total": 24576,
+          "temp": 42.5
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 60.9,
+          "vram": 1614.0,
+          "vram_total": 16384,
+          "temp": 62.1
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 94.0,
+          "vram": 2398.0,
+          "vram_total": 12288,
+          "temp": 80.3
+        }
+      ]
+    },
+    {
+      "t": 9.6,
+      "clock": "13:45:09",
+      "step": "inference",
+      "active_event_ids": [],
+      "cpu": 45.0,
+      "cpu_temp": 55.9,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 25.7,
+          "temp": 46.1
+        },
+        {
+          "core_id": 1,
+          "util": 26.2,
+          "temp": 45.5
+        },
+        {
+          "core_id": 2,
+          "util": 30.2,
+          "temp": 47.6
+        },
+        {
+          "core_id": 3,
+          "util": 30.8,
+          "temp": 47.5
+        },
+        {
+          "core_id": 4,
+          "util": 28.0,
+          "temp": 43.9
+        },
+        {
+          "core_id": 5,
+          "util": 29.6,
+          "temp": 45.7
+        },
+        {
+          "core_id": 6,
+          "util": 49.8,
+          "temp": 59.8
+        },
+        {
+          "core_id": 7,
+          "util": 49.6,
+          "temp": 58.2
+        },
+        {
+          "core_id": 8,
+          "util": 54.2,
+          "temp": 63.1
+        },
+        {
+          "core_id": 9,
+          "util": 52.6,
+          "temp": 59.8
+        },
+        {
+          "core_id": 10,
+          "util": 77.2,
+          "temp": 75.5
+        },
+        {
+          "core_id": 11,
+          "util": 84.4,
+          "temp": 79.9
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 67.9
+          },
+          {
+            "core_id": 1,
+            "value": 67.9
+          },
+          {
+            "core_id": 2,
+            "value": 68.5
+          },
+          {
+            "core_id": 3,
+            "value": 68.6
+          },
+          {
+            "core_id": 4,
+            "value": 68.2
+          },
+          {
+            "core_id": 5,
+            "value": 68.4
+          },
+          {
+            "core_id": 6,
+            "value": 71.5
+          },
+          {
+            "core_id": 7,
+            "value": 71.4
+          },
+          {
+            "core_id": 8,
+            "value": 72.1
+          },
+          {
+            "core_id": 9,
+            "value": 71.9
+          },
+          {
+            "core_id": 10,
+            "value": 75.6
+          },
+          {
+            "core_id": 11,
+            "value": 76.7
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1035.6
+          },
+          {
+            "core_id": 1,
+            "value": 1035.8
+          },
+          {
+            "core_id": 2,
+            "value": 1037.6
+          },
+          {
+            "core_id": 3,
+            "value": 1037.9
+          },
+          {
+            "core_id": 4,
+            "value": 1036.6
+          },
+          {
+            "core_id": 5,
+            "value": 1037.3
+          },
+          {
+            "core_id": 6,
+            "value": 1046.4
+          },
+          {
+            "core_id": 7,
+            "value": 1046.3
+          },
+          {
+            "core_id": 8,
+            "value": 1048.4
+          },
+          {
+            "core_id": 9,
+            "value": 1047.7
+          },
+          {
+            "core_id": 10,
+            "value": 1058.7
+          },
+          {
+            "core_id": 11,
+            "value": 1062.0
+          }
+        ],
+        "l3_global_mb": 41.67
+      },
+      "mem": 43.7,
+      "mem_mb": 7167.0,
+      "disk_r": 0.52,
+      "disk_w": 0.65,
+      "net_s": 0.18,
+      "net_r": 0.21,
+      "gpu_util": 65.4,
+      "gpu_vram": 5105.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 64.5,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 30.9,
+          "vram": 890.0,
+          "vram_total": 24576,
+          "temp": 43.6
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 69.1,
+          "vram": 1649.0,
+          "vram_total": 16384,
+          "temp": 67.9
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 99.6,
+          "vram": 2584.0,
+          "vram_total": 12288,
+          "temp": 85.3
+        }
+      ]
+    },
+    {
+      "t": 10.0,
+      "clock": "13:45:10",
+      "step": "inference",
+      "active_event_ids": [],
+      "cpu": 46.1,
+      "cpu_temp": 56.0,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 27.7,
+          "temp": 47.0
+        },
+        {
+          "core_id": 1,
+          "util": 24.9,
+          "temp": 44.3
+        },
+        {
+          "core_id": 2,
+          "util": 29.6,
+          "temp": 47.5
+        },
+        {
+          "core_id": 3,
+          "util": 27.3,
+          "temp": 46.1
+        },
+        {
+          "core_id": 4,
+          "util": 28.2,
+          "temp": 44.8
+        },
+        {
+          "core_id": 5,
+          "util": 27.0,
+          "temp": 45.4
+        },
+        {
+          "core_id": 6,
+          "util": 60.2,
+          "temp": 64.7
+        },
+        {
+          "core_id": 7,
+          "util": 51.9,
+          "temp": 60.3
+        },
+        {
+          "core_id": 8,
+          "util": 51.8,
+          "temp": 61.0
+        },
+        {
+          "core_id": 9,
+          "util": 52.1,
+          "temp": 60.7
+        },
+        {
+          "core_id": 10,
+          "util": 79.4,
+          "temp": 76.2
+        },
+        {
+          "core_id": 11,
+          "util": 80.0,
+          "temp": 77.6
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 68.2
+          },
+          {
+            "core_id": 1,
+            "value": 67.7
+          },
+          {
+            "core_id": 2,
+            "value": 68.4
+          },
+          {
+            "core_id": 3,
+            "value": 68.1
+          },
+          {
+            "core_id": 4,
+            "value": 68.2
+          },
+          {
+            "core_id": 5,
+            "value": 68.0
+          },
+          {
+            "core_id": 6,
+            "value": 73.0
+          },
+          {
+            "core_id": 7,
+            "value": 71.8
+          },
+          {
+            "core_id": 8,
+            "value": 71.8
+          },
+          {
+            "core_id": 9,
+            "value": 71.8
+          },
+          {
+            "core_id": 10,
+            "value": 75.9
+          },
+          {
+            "core_id": 11,
+            "value": 76.0
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1036.5
+          },
+          {
+            "core_id": 1,
+            "value": 1035.2
+          },
+          {
+            "core_id": 2,
+            "value": 1037.3
+          },
+          {
+            "core_id": 3,
+            "value": 1036.3
+          },
+          {
+            "core_id": 4,
+            "value": 1036.7
+          },
+          {
+            "core_id": 5,
+            "value": 1036.2
+          },
+          {
+            "core_id": 6,
+            "value": 1051.1
+          },
+          {
+            "core_id": 7,
+            "value": 1047.4
+          },
+          {
+            "core_id": 8,
+            "value": 1047.3
+          },
+          {
+            "core_id": 9,
+            "value": 1047.4
+          },
+          {
+            "core_id": 10,
+            "value": 1059.7
+          },
+          {
+            "core_id": 11,
+            "value": 1060.0
+          }
+        ],
+        "l3_global_mb": 41.81
+      },
+      "mem": 43.4,
+      "mem_mb": 7119.0,
+      "disk_r": 0.53,
+      "disk_w": 0.68,
+      "net_s": 0.18,
+      "net_r": 0.22,
+      "gpu_util": 71.6,
+      "gpu_vram": 5398.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 66.9,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 35.1,
+          "vram": 982.0,
+          "vram_total": 24576,
+          "temp": 46.1
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 69.6,
+          "vram": 1781.0,
+          "vram_total": 16384,
+          "temp": 68.1
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 100,
+          "vram": 2659.0,
+          "vram_total": 12288,
+          "temp": 83.5
+        }
+      ]
+    },
+    {
+      "t": 10.4,
+      "clock": "13:45:10",
+      "step": "inference",
+      "active_event_ids": [],
+      "cpu": 46.8,
+      "cpu_temp": 55.2,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 29.2,
+          "temp": 47.0
+        },
+        {
+          "core_id": 1,
+          "util": 26.3,
+          "temp": 42.9
+        },
+        {
+          "core_id": 2,
+          "util": 32.0,
+          "temp": 46.8
+        },
+        {
+          "core_id": 3,
+          "util": 23.2,
+          "temp": 42.5
+        },
+        {
+          "core_id": 4,
+          "util": 33.0,
+          "temp": 49.0
+        },
+        {
+          "core_id": 5,
+          "util": 32.5,
+          "temp": 47.4
+        },
+        {
+          "core_id": 6,
+          "util": 54.9,
+          "temp": 61.7
+        },
+        {
+          "core_id": 7,
+          "util": 56.9,
+          "temp": 61.1
+        },
+        {
+          "core_id": 8,
+          "util": 61.1,
+          "temp": 66.9
+        },
+        {
+          "core_id": 9,
+          "util": 59.3,
+          "temp": 64.5
+        },
+        {
+          "core_id": 10,
+          "util": 83.3,
+          "temp": 79.7
+        },
+        {
+          "core_id": 11,
+          "util": 86.7,
+          "temp": 81.5
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 68.4
+          },
+          {
+            "core_id": 1,
+            "value": 67.9
+          },
+          {
+            "core_id": 2,
+            "value": 68.8
+          },
+          {
+            "core_id": 3,
+            "value": 67.5
+          },
+          {
+            "core_id": 4,
+            "value": 69.0
+          },
+          {
+            "core_id": 5,
+            "value": 68.9
+          },
+          {
+            "core_id": 6,
+            "value": 72.2
+          },
+          {
+            "core_id": 7,
+            "value": 72.5
+          },
+          {
+            "core_id": 8,
+            "value": 73.2
+          },
+          {
+            "core_id": 9,
+            "value": 72.9
+          },
+          {
+            "core_id": 10,
+            "value": 76.5
+          },
+          {
+            "core_id": 11,
+            "value": 77.0
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1037.1
+          },
+          {
+            "core_id": 1,
+            "value": 1035.8
+          },
+          {
+            "core_id": 2,
+            "value": 1038.4
+          },
+          {
+            "core_id": 3,
+            "value": 1034.4
+          },
+          {
+            "core_id": 4,
+            "value": 1038.8
+          },
+          {
+            "core_id": 5,
+            "value": 1038.6
+          },
+          {
+            "core_id": 6,
+            "value": 1048.7
+          },
+          {
+            "core_id": 7,
+            "value": 1049.6
+          },
+          {
+            "core_id": 8,
+            "value": 1051.5
+          },
+          {
+            "core_id": 9,
+            "value": 1050.7
+          },
+          {
+            "core_id": 10,
+            "value": 1061.5
+          },
+          {
+            "core_id": 11,
+            "value": 1063.0
+          }
+        ],
+        "l3_global_mb": 41.9
+      },
+      "mem": 42.8,
+      "mem_mb": 7018.0,
+      "disk_r": 0.54,
+      "disk_w": 0.7,
+      "net_s": 0.19,
+      "net_r": 0.23,
+      "gpu_util": 75.2,
+      "gpu_vram": 5704.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 69.1,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 34.6,
+          "vram": 871.0,
+          "vram_total": 24576,
+          "temp": 47.2
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 74.8,
+          "vram": 1847.0,
+          "vram_total": 16384,
+          "temp": 71.2
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 100,
+          "vram": 2896.0,
+          "vram_total": 12288,
+          "temp": 85.0
+        }
+      ]
+    },
+    {
+      "t": 10.8,
+      "clock": "13:45:10",
+      "step": "assembly",
+      "active_event_ids": [],
+      "cpu": 48.1,
+      "cpu_temp": 55.8,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 47.7,
+          "temp": 56.8
+        },
+        {
+          "core_id": 1,
+          "util": 52.4,
+          "temp": 59.6
+        },
+        {
+          "core_id": 2,
+          "util": 46.1,
+          "temp": 54.4
+        },
+        {
+          "core_id": 3,
+          "util": 47.8,
+          "temp": 55.5
+        },
+        {
+          "core_id": 4,
+          "util": 48.3,
+          "temp": 59.9
+        },
+        {
+          "core_id": 5,
+          "util": 51.8,
+          "temp": 60.4
+        },
+        {
+          "core_id": 6,
+          "util": 46.0,
+          "temp": 57.5
+        },
+        {
+          "core_id": 7,
+          "util": 50.3,
+          "temp": 58.6
+        },
+        {
+          "core_id": 8,
+          "util": 46.0,
+          "temp": 55.9
+        },
+        {
+          "core_id": 9,
+          "util": 50.9,
+          "temp": 58.1
+        },
+        {
+          "core_id": 10,
+          "util": 48.3,
+          "temp": 56.1
+        },
+        {
+          "core_id": 11,
+          "util": 48.6,
+          "temp": 58.0
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 71.2
+          },
+          {
+            "core_id": 1,
+            "value": 71.9
+          },
+          {
+            "core_id": 2,
+            "value": 70.9
+          },
+          {
+            "core_id": 3,
+            "value": 71.2
+          },
+          {
+            "core_id": 4,
+            "value": 71.2
+          },
+          {
+            "core_id": 5,
+            "value": 71.8
+          },
+          {
+            "core_id": 6,
+            "value": 70.9
+          },
+          {
+            "core_id": 7,
+            "value": 71.5
+          },
+          {
+            "core_id": 8,
+            "value": 70.9
+          },
+          {
+            "core_id": 9,
+            "value": 71.6
+          },
+          {
+            "core_id": 10,
+            "value": 71.2
+          },
+          {
+            "core_id": 11,
+            "value": 71.3
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1045.5
+          },
+          {
+            "core_id": 1,
+            "value": 1047.6
+          },
+          {
+            "core_id": 2,
+            "value": 1044.7
+          },
+          {
+            "core_id": 3,
+            "value": 1045.5
+          },
+          {
+            "core_id": 4,
+            "value": 1045.7
+          },
+          {
+            "core_id": 5,
+            "value": 1047.3
+          },
+          {
+            "core_id": 6,
+            "value": 1044.7
+          },
+          {
+            "core_id": 7,
+            "value": 1046.6
+          },
+          {
+            "core_id": 8,
+            "value": 1044.7
+          },
+          {
+            "core_id": 9,
+            "value": 1046.9
+          },
+          {
+            "core_id": 10,
+            "value": 1045.7
+          },
+          {
+            "core_id": 11,
+            "value": 1045.9
+          }
+        ],
+        "l3_global_mb": 42.07
+      },
+      "mem": 43.6,
+      "mem_mb": 7147.0,
+      "disk_r": 0.56,
+      "disk_w": 0.73,
+      "net_s": 0.19,
+      "net_r": 0.23,
+      "gpu_util": 55.6,
+      "gpu_vram": 4096.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 57.3,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 57.3,
+          "vram": 1446.0,
+          "vram_total": 24576,
+          "temp": 61.1
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 55.4,
+          "vram": 1419.0,
+          "vram_total": 16384,
+          "temp": 58.3
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 59.4,
+          "vram": 1328.0,
+          "vram_total": 12288,
+          "temp": 61.9
+        }
+      ]
+    },
+    {
+      "t": 11.2,
+      "clock": "13:45:11",
+      "step": "assembly",
+      "active_event_ids": [
+        "E006"
+      ],
+      "cpu": 46.5,
+      "cpu_temp": 55.4,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 46.7,
+          "temp": 56.0
+        },
+        {
+          "core_id": 1,
+          "util": 44.0,
+          "temp": 56.4
+        },
+        {
+          "core_id": 2,
+          "util": 41.8,
+          "temp": 55.3
+        },
+        {
+          "core_id": 3,
+          "util": 45.4,
+          "temp": 55.9
+        },
+        {
+          "core_id": 4,
+          "util": 41.8,
+          "temp": 53.7
+        },
+        {
+          "core_id": 5,
+          "util": 50.9,
+          "temp": 60.4
+        },
+        {
+          "core_id": 6,
+          "util": 46.4,
+          "temp": 56.9
+        },
+        {
+          "core_id": 7,
+          "util": 42.0,
+          "temp": 55.6
+        },
+        {
+          "core_id": 8,
+          "util": 44.4,
+          "temp": 56.5
+        },
+        {
+          "core_id": 9,
+          "util": 44.2,
+          "temp": 53.6
+        },
+        {
+          "core_id": 10,
+          "util": 45.8,
+          "temp": 56.9
+        },
+        {
+          "core_id": 11,
+          "util": 45.5,
+          "temp": 54.9
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 71.0
+          },
+          {
+            "core_id": 1,
+            "value": 70.6
+          },
+          {
+            "core_id": 2,
+            "value": 70.3
+          },
+          {
+            "core_id": 3,
+            "value": 70.8
+          },
+          {
+            "core_id": 4,
+            "value": 70.3
+          },
+          {
+            "core_id": 5,
+            "value": 71.6
+          },
+          {
+            "core_id": 6,
+            "value": 71.0
+          },
+          {
+            "core_id": 7,
+            "value": 70.3
+          },
+          {
+            "core_id": 8,
+            "value": 70.7
+          },
+          {
+            "core_id": 9,
+            "value": 70.6
+          },
+          {
+            "core_id": 10,
+            "value": 70.9
+          },
+          {
+            "core_id": 11,
+            "value": 70.8
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1045.0
+          },
+          {
+            "core_id": 1,
+            "value": 1043.8
+          },
+          {
+            "core_id": 2,
+            "value": 1042.8
+          },
+          {
+            "core_id": 3,
+            "value": 1044.4
+          },
+          {
+            "core_id": 4,
+            "value": 1042.8
+          },
+          {
+            "core_id": 5,
+            "value": 1046.9
+          },
+          {
+            "core_id": 6,
+            "value": 1044.9
+          },
+          {
+            "core_id": 7,
+            "value": 1042.9
+          },
+          {
+            "core_id": 8,
+            "value": 1044.0
+          },
+          {
+            "core_id": 9,
+            "value": 1043.9
+          },
+          {
+            "core_id": 10,
+            "value": 1044.6
+          },
+          {
+            "core_id": 11,
+            "value": 1044.5
+          }
+        ],
+        "l3_global_mb": 41.85
+      },
+      "mem": 41.5,
+      "mem_mb": 6806.0,
+      "disk_r": 0.58,
+      "disk_w": 0.77,
+      "net_s": 0.21,
+      "net_r": 0.25,
+      "gpu_util": 41.0,
+      "gpu_vram": 2971.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 48.9,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 39.4,
+          "vram": 1080.0,
+          "vram_total": 24576,
+          "temp": 50.5
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 38.0,
+          "vram": 984.0,
+          "vram_total": 16384,
+          "temp": 48.8
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 44.4,
+          "vram": 936.0,
+          "vram_total": 12288,
+          "temp": 50.1
+        }
+      ]
+    },
+    {
+      "t": 11.6,
+      "clock": "13:45:11",
+      "step": "assembly",
+      "active_event_ids": [
+        "E006"
+      ],
+      "cpu": 44.9,
+      "cpu_temp": 53.2,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 42.1,
+          "temp": 54.6
+        },
+        {
+          "core_id": 1,
+          "util": 48.1,
+          "temp": 59.4
+        },
+        {
+          "core_id": 2,
+          "util": 48.7,
+          "temp": 56.3
+        },
+        {
+          "core_id": 3,
+          "util": 46.0,
+          "temp": 55.3
+        },
+        {
+          "core_id": 4,
+          "util": 40.8,
+          "temp": 55.1
+        },
+        {
+          "core_id": 5,
+          "util": 41.6,
+          "temp": 52.8
+        },
+        {
+          "core_id": 6,
+          "util": 49.2,
+          "temp": 59.3
+        },
+        {
+          "core_id": 7,
+          "util": 40.0,
+          "temp": 51.9
+        },
+        {
+          "core_id": 8,
+          "util": 45.8,
+          "temp": 54.5
+        },
+        {
+          "core_id": 9,
+          "util": 41.6,
+          "temp": 52.4
+        },
+        {
+          "core_id": 10,
+          "util": 42.7,
+          "temp": 52.7
+        },
+        {
+          "core_id": 11,
+          "util": 40.8,
+          "temp": 54.8
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 70.3
+          },
+          {
+            "core_id": 1,
+            "value": 71.2
+          },
+          {
+            "core_id": 2,
+            "value": 71.3
+          },
+          {
+            "core_id": 3,
+            "value": 70.9
+          },
+          {
+            "core_id": 4,
+            "value": 70.1
+          },
+          {
+            "core_id": 5,
+            "value": 70.2
+          },
+          {
+            "core_id": 6,
+            "value": 71.4
+          },
+          {
+            "core_id": 7,
+            "value": 70.0
+          },
+          {
+            "core_id": 8,
+            "value": 70.9
+          },
+          {
+            "core_id": 9,
+            "value": 70.2
+          },
+          {
+            "core_id": 10,
+            "value": 70.4
+          },
+          {
+            "core_id": 11,
+            "value": 70.1
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1042.9
+          },
+          {
+            "core_id": 1,
+            "value": 1045.6
+          },
+          {
+            "core_id": 2,
+            "value": 1045.9
+          },
+          {
+            "core_id": 3,
+            "value": 1044.7
+          },
+          {
+            "core_id": 4,
+            "value": 1042.4
+          },
+          {
+            "core_id": 5,
+            "value": 1042.7
+          },
+          {
+            "core_id": 6,
+            "value": 1046.1
+          },
+          {
+            "core_id": 7,
+            "value": 1042.0
+          },
+          {
+            "core_id": 8,
+            "value": 1044.6
+          },
+          {
+            "core_id": 9,
+            "value": 1042.7
+          },
+          {
+            "core_id": 10,
+            "value": 1043.2
+          },
+          {
+            "core_id": 11,
+            "value": 1042.4
+          }
+        ],
+        "l3_global_mb": 41.65
+      },
+      "mem": 38.8,
+      "mem_mb": 6358.0,
+      "disk_r": 0.62,
+      "disk_w": 0.82,
+      "net_s": 0.23,
+      "net_r": 0.27,
+      "gpu_util": 28.1,
+      "gpu_vram": 2157.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 43.3,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 31.3,
+          "vram": 749.0,
+          "vram_total": 24576,
+          "temp": 42.5
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 30.9,
+          "vram": 725.0,
+          "vram_total": 16384,
+          "temp": 44.3
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 31.5,
+          "vram": 680.0,
+          "vram_total": 12288,
+          "temp": 43.1
+        }
+      ]
+    },
+    {
+      "t": 12.0,
+      "clock": "13:45:12",
+      "step": "assembly",
+      "active_event_ids": [
+        "E006"
+      ],
+      "cpu": 39.9,
+      "cpu_temp": 52.4,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 37.8,
+          "temp": 49.3
+        },
+        {
+          "core_id": 1,
+          "util": 35.5,
+          "temp": 51.3
+        },
+        {
+          "core_id": 2,
+          "util": 39.2,
+          "temp": 51.1
+        },
+        {
+          "core_id": 3,
+          "util": 36.4,
+          "temp": 48.9
+        },
+        {
+          "core_id": 4,
+          "util": 41.7,
+          "temp": 55.7
+        },
+        {
+          "core_id": 5,
+          "util": 37.2,
+          "temp": 49.0
+        },
+        {
+          "core_id": 6,
+          "util": 40.7,
+          "temp": 54.6
+        },
+        {
+          "core_id": 7,
+          "util": 39.8,
+          "temp": 53.3
+        },
+        {
+          "core_id": 8,
+          "util": 43.8,
+          "temp": 54.4
+        },
+        {
+          "core_id": 9,
+          "util": 41.8,
+          "temp": 55.4
+        },
+        {
+          "core_id": 10,
+          "util": 44.0,
+          "temp": 53.1
+        },
+        {
+          "core_id": 11,
+          "util": 35.9,
+          "temp": 48.9
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 69.7
+          },
+          {
+            "core_id": 1,
+            "value": 69.3
+          },
+          {
+            "core_id": 2,
+            "value": 69.9
+          },
+          {
+            "core_id": 3,
+            "value": 69.5
+          },
+          {
+            "core_id": 4,
+            "value": 70.3
+          },
+          {
+            "core_id": 5,
+            "value": 69.6
+          },
+          {
+            "core_id": 6,
+            "value": 70.1
+          },
+          {
+            "core_id": 7,
+            "value": 70.0
+          },
+          {
+            "core_id": 8,
+            "value": 70.6
+          },
+          {
+            "core_id": 9,
+            "value": 70.3
+          },
+          {
+            "core_id": 10,
+            "value": 70.6
+          },
+          {
+            "core_id": 11,
+            "value": 69.4
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1041.0
+          },
+          {
+            "core_id": 1,
+            "value": 1040.0
+          },
+          {
+            "core_id": 2,
+            "value": 1041.6
+          },
+          {
+            "core_id": 3,
+            "value": 1040.4
+          },
+          {
+            "core_id": 4,
+            "value": 1042.8
+          },
+          {
+            "core_id": 5,
+            "value": 1040.7
+          },
+          {
+            "core_id": 6,
+            "value": 1042.3
+          },
+          {
+            "core_id": 7,
+            "value": 1041.9
+          },
+          {
+            "core_id": 8,
+            "value": 1043.7
+          },
+          {
+            "core_id": 9,
+            "value": 1042.8
+          },
+          {
+            "core_id": 10,
+            "value": 1043.8
+          },
+          {
+            "core_id": 11,
+            "value": 1040.2
+          }
+        ],
+        "l3_global_mb": 41.03
+      },
+      "mem": 36.1,
+      "mem_mb": 5909.0,
+      "disk_r": 0.65,
+      "disk_w": 0.88,
+      "net_s": 0.25,
+      "net_r": 0.31,
+      "gpu_util": 19.0,
+      "gpu_vram": 1533.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 39.0,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 15.6,
+          "vram": 560.0,
+          "vram_total": 24576,
+          "temp": 35.1
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 21.7,
+          "vram": 515.0,
+          "vram_total": 16384,
+          "temp": 38.3
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 19.3,
+          "vram": 470.0,
+          "vram_total": 12288,
+          "temp": 36.6
+        }
+      ]
+    },
+    {
+      "t": 12.4,
+      "clock": "13:45:12",
+      "step": "assembly",
+      "active_event_ids": [
+        "E006"
+      ],
+      "cpu": 36.6,
+      "cpu_temp": 51.0,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 40.2,
+          "temp": 51.0
+        },
+        {
+          "core_id": 1,
+          "util": 41.3,
+          "temp": 52.8
+        },
+        {
+          "core_id": 2,
+          "util": 33.6,
+          "temp": 48.6
+        },
+        {
+          "core_id": 3,
+          "util": 35.7,
+          "temp": 49.0
+        },
+        {
+          "core_id": 4,
+          "util": 41.4,
+          "temp": 52.4
+        },
+        {
+          "core_id": 5,
+          "util": 36.0,
+          "temp": 48.8
+        },
+        {
+          "core_id": 6,
+          "util": 35.4,
+          "temp": 49.4
+        },
+        {
+          "core_id": 7,
+          "util": 39.0,
+          "temp": 51.1
+        },
+        {
+          "core_id": 8,
+          "util": 41.1,
+          "temp": 55.4
+        },
+        {
+          "core_id": 9,
+          "util": 41.0,
+          "temp": 52.0
+        },
+        {
+          "core_id": 10,
+          "util": 34.8,
+          "temp": 47.7
+        },
+        {
+          "core_id": 11,
+          "util": 32.2,
+          "temp": 47.9
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 70.0
+          },
+          {
+            "core_id": 1,
+            "value": 70.2
+          },
+          {
+            "core_id": 2,
+            "value": 69.0
+          },
+          {
+            "core_id": 3,
+            "value": 69.4
+          },
+          {
+            "core_id": 4,
+            "value": 70.2
+          },
+          {
+            "core_id": 5,
+            "value": 69.4
+          },
+          {
+            "core_id": 6,
+            "value": 69.3
+          },
+          {
+            "core_id": 7,
+            "value": 69.8
+          },
+          {
+            "core_id": 8,
+            "value": 70.2
+          },
+          {
+            "core_id": 9,
+            "value": 70.2
+          },
+          {
+            "core_id": 10,
+            "value": 69.2
+          },
+          {
+            "core_id": 11,
+            "value": 68.8
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1042.1
+          },
+          {
+            "core_id": 1,
+            "value": 1042.6
+          },
+          {
+            "core_id": 2,
+            "value": 1039.1
+          },
+          {
+            "core_id": 3,
+            "value": 1040.1
+          },
+          {
+            "core_id": 4,
+            "value": 1042.6
+          },
+          {
+            "core_id": 5,
+            "value": 1040.2
+          },
+          {
+            "core_id": 6,
+            "value": 1039.9
+          },
+          {
+            "core_id": 7,
+            "value": 1041.5
+          },
+          {
+            "core_id": 8,
+            "value": 1042.5
+          },
+          {
+            "core_id": 9,
+            "value": 1042.5
+          },
+          {
+            "core_id": 10,
+            "value": 1039.7
+          },
+          {
+            "core_id": 11,
+            "value": 1038.5
+          }
+        ],
+        "l3_global_mb": 40.62
+      },
+      "mem": 33.6,
+      "mem_mb": 5499.0,
+      "disk_r": 0.7,
+      "disk_w": 0.94,
+      "net_s": 0.29,
+      "net_r": 0.35,
+      "gpu_util": 11.7,
+      "gpu_vram": 1083.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 35.0,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 8.7,
+          "vram": 275.0,
+          "vram_total": 24576,
+          "temp": 31.5
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 12.0,
+          "vram": 378.0,
+          "vram_total": 16384,
+          "temp": 34.5
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 13.3,
+          "vram": 313.0,
+          "vram_total": 12288,
+          "temp": 34.5
+        }
+      ]
+    },
+    {
+      "t": 12.8,
+      "clock": "13:45:12",
+      "step": "assembly",
+      "active_event_ids": [],
+      "cpu": 30.4,
+      "cpu_temp": 47.9,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 25.5,
+          "temp": 45.1
+        },
+        {
+          "core_id": 1,
+          "util": 28.4,
+          "temp": 47.3
+        },
+        {
+          "core_id": 2,
+          "util": 33.6,
+          "temp": 48.7
+        },
+        {
+          "core_id": 3,
+          "util": 27.1,
+          "temp": 45.0
+        },
+        {
+          "core_id": 4,
+          "util": 29.3,
+          "temp": 46.1
+        },
+        {
+          "core_id": 5,
+          "util": 32.3,
+          "temp": 47.8
+        },
+        {
+          "core_id": 6,
+          "util": 27.2,
+          "temp": 45.6
+        },
+        {
+          "core_id": 7,
+          "util": 31.6,
+          "temp": 47.7
+        },
+        {
+          "core_id": 8,
+          "util": 34.3,
+          "temp": 49.6
+        },
+        {
+          "core_id": 9,
+          "util": 34.1,
+          "temp": 49.5
+        },
+        {
+          "core_id": 10,
+          "util": 35.3,
+          "temp": 51.1
+        },
+        {
+          "core_id": 11,
+          "util": 34.2,
+          "temp": 51.4
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 67.8
+          },
+          {
+            "core_id": 1,
+            "value": 68.3
+          },
+          {
+            "core_id": 2,
+            "value": 69.0
+          },
+          {
+            "core_id": 3,
+            "value": 68.1
+          },
+          {
+            "core_id": 4,
+            "value": 68.4
+          },
+          {
+            "core_id": 5,
+            "value": 68.8
+          },
+          {
+            "core_id": 6,
+            "value": 68.1
+          },
+          {
+            "core_id": 7,
+            "value": 68.7
+          },
+          {
+            "core_id": 8,
+            "value": 69.1
+          },
+          {
+            "core_id": 9,
+            "value": 69.1
+          },
+          {
+            "core_id": 10,
+            "value": 69.3
+          },
+          {
+            "core_id": 11,
+            "value": 69.1
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1035.5
+          },
+          {
+            "core_id": 1,
+            "value": 1036.8
+          },
+          {
+            "core_id": 2,
+            "value": 1039.1
+          },
+          {
+            "core_id": 3,
+            "value": 1036.2
+          },
+          {
+            "core_id": 4,
+            "value": 1037.2
+          },
+          {
+            "core_id": 5,
+            "value": 1038.5
+          },
+          {
+            "core_id": 6,
+            "value": 1036.2
+          },
+          {
+            "core_id": 7,
+            "value": 1038.2
+          },
+          {
+            "core_id": 8,
+            "value": 1039.4
+          },
+          {
+            "core_id": 9,
+            "value": 1039.3
+          },
+          {
+            "core_id": 10,
+            "value": 1039.9
+          },
+          {
+            "core_id": 11,
+            "value": 1039.4
+          }
+        ],
+        "l3_global_mb": 39.83
+      },
+      "mem": 32.2,
+      "mem_mb": 5284.0,
+      "disk_r": 0.77,
+      "disk_w": 1.01,
+      "net_s": 0.29,
+      "net_r": 0.36,
+      "gpu_util": 9.8,
+      "gpu_vram": 794.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 33.4,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 9.2,
+          "vram": 350.0,
+          "vram_total": 24576,
+          "temp": 30.6
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 13.0,
+          "vram": 329.0,
+          "vram_total": 16384,
+          "temp": 33.5
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 13.6,
+          "vram": 249.0,
+          "vram_total": 12288,
+          "temp": 32.5
+        }
+      ]
+    },
+    {
+      "t": 13.2,
+      "clock": "13:45:13",
+      "step": "assembly",
+      "active_event_ids": [],
+      "cpu": 25.6,
+      "cpu_temp": 44.2,
+      "cpu_cores": [
+        {
+          "core_id": 0,
+          "util": 25.5,
+          "temp": 42.4
+        },
+        {
+          "core_id": 1,
+          "util": 25.9,
+          "temp": 42.4
+        },
+        {
+          "core_id": 2,
+          "util": 22.5,
+          "temp": 42.2
+        },
+        {
+          "core_id": 3,
+          "util": 25.2,
+          "temp": 41.7
+        },
+        {
+          "core_id": 4,
+          "util": 26.1,
+          "temp": 46.1
+        },
+        {
+          "core_id": 5,
+          "util": 30.0,
+          "temp": 46.5
+        },
+        {
+          "core_id": 6,
+          "util": 30.5,
+          "temp": 45.5
+        },
+        {
+          "core_id": 7,
+          "util": 25.5,
+          "temp": 44.7
+        },
+        {
+          "core_id": 8,
+          "util": 22.9,
+          "temp": 43.2
+        },
+        {
+          "core_id": 9,
+          "util": 26.2,
+          "temp": 42.2
+        },
+        {
+          "core_id": 10,
+          "util": 26.7,
+          "temp": 45.6
+        },
+        {
+          "core_id": 11,
+          "util": 21.5,
+          "temp": 43.0
+        }
+      ],
+      "cpu_cache": {
+        "l1_kb": [
+          {
+            "core_id": 0,
+            "value": 67.8
+          },
+          {
+            "core_id": 1,
+            "value": 67.9
+          },
+          {
+            "core_id": 2,
+            "value": 67.4
+          },
+          {
+            "core_id": 3,
+            "value": 67.8
+          },
+          {
+            "core_id": 4,
+            "value": 67.9
+          },
+          {
+            "core_id": 5,
+            "value": 68.5
+          },
+          {
+            "core_id": 6,
+            "value": 68.6
+          },
+          {
+            "core_id": 7,
+            "value": 67.8
+          },
+          {
+            "core_id": 8,
+            "value": 67.4
+          },
+          {
+            "core_id": 9,
+            "value": 67.9
+          },
+          {
+            "core_id": 10,
+            "value": 68.0
+          },
+          {
+            "core_id": 11,
+            "value": 67.2
+          }
+        ],
+        "l2_kb": [
+          {
+            "core_id": 0,
+            "value": 1035.5
+          },
+          {
+            "core_id": 1,
+            "value": 1035.7
+          },
+          {
+            "core_id": 2,
+            "value": 1034.1
+          },
+          {
+            "core_id": 3,
+            "value": 1035.3
+          },
+          {
+            "core_id": 4,
+            "value": 1035.7
+          },
+          {
+            "core_id": 5,
+            "value": 1037.5
+          },
+          {
+            "core_id": 6,
+            "value": 1037.7
+          },
+          {
+            "core_id": 7,
+            "value": 1035.5
+          },
+          {
+            "core_id": 8,
+            "value": 1034.3
+          },
+          {
+            "core_id": 9,
+            "value": 1035.8
+          },
+          {
+            "core_id": 10,
+            "value": 1036.0
+          },
+          {
+            "core_id": 11,
+            "value": 1033.7
+          }
+        ],
+        "l3_global_mb": 39.23
+      },
+      "mem": 30.4,
+      "mem_mb": 4982.0,
+      "disk_r": 0.83,
+      "disk_w": 1.1,
+      "net_s": 0.3,
+      "net_r": 0.37,
+      "gpu_util": 6.5,
+      "gpu_vram": 598.0,
+      "gpu_vram_total": 8192,
+      "gpu_temp": 32.2,
+      "gpu_devices": [
+        {
+          "gpu_id": 0,
+          "name": "GPU-0",
+          "util": 5.4,
+          "vram": 119.0,
+          "vram_total": 24576,
+          "temp": 28.8
+        },
+        {
+          "gpu_id": 1,
+          "name": "GPU-1",
+          "util": 8.5,
+          "vram": 263.0,
+          "vram_total": 16384,
+          "temp": 30.1
+        },
+        {
+          "gpu_id": 2,
+          "name": "GPU-2",
+          "util": 9.7,
+          "vram": 249.0,
+          "vram_total": 12288,
+          "temp": 32.6
+        }
+      ]
+    }
+  ]
+}
