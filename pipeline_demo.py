@@ -23,6 +23,9 @@ DEFAULT_METRICS = "metrics_output.json"
 DEFAULT_DASHBOARD = "pipeline_dashboard.html"
 
 DEFAULT_SAMPLE_INTERVAL = 0.4
+MIN_SAMPLE_INTERVAL = 0.05
+MAX_SAMPLE_INTERVAL = 5.0
+MAX_TIMELINE_DURATION_SEC = 24 * 60 * 60
 DEFAULT_GPU_VRAM_TOTAL = 8192
 DEFAULT_MEM_TOTAL_MB = 16384
 
@@ -381,8 +384,18 @@ def _resolve_window(row: dict[str, str], cursor: float, default_duration: float 
     else:
         raise ValueError("Each stage/event needs start/end/duration (at least one timing expression)")
 
+    if duration is not None and duration <= 0:
+        raise ValueError("duration must be > 0")
+    if start is not None and start < 0:
+        raise ValueError("start must be >= 0")
+    if end is not None and end < 0:
+        raise ValueError("end must be >= 0")
+    if not all(math.isfinite(v) for v in [start, end] if v is not None):
+        raise ValueError("start/end/duration must be finite numeric values")
     if end <= start:
         raise ValueError("end must be > start")
+    if end > MAX_TIMELINE_DURATION_SEC:
+        raise ValueError(f"end time exceeds max supported duration ({MAX_TIMELINE_DURATION_SEC}s)")
     return float(start), float(end)
 
 
@@ -391,6 +404,12 @@ def load_config(config_path: Path) -> tuple[dict, list[StageConfig], list[EventC
 
     global_cfg = _parse_global(_extract_section(text, "Global"))
     sample_interval = float(global_cfg.get("sample_interval_sec", DEFAULT_SAMPLE_INTERVAL))
+    if not math.isfinite(sample_interval):
+        raise ValueError("sample_interval_sec must be a finite number")
+    if sample_interval < MIN_SAMPLE_INTERVAL or sample_interval > MAX_SAMPLE_INTERVAL:
+        raise ValueError(
+            f"sample_interval_sec must be between {MIN_SAMPLE_INTERVAL} and {MAX_SAMPLE_INTERVAL}"
+        )
     clock_start_str = global_cfg.get("clock_start", "09:00:00")
     clock_start_sec = _parse_hms_to_sec(clock_start_str)
 
@@ -779,22 +798,40 @@ def inject_dashboard_data(dashboard_path: Path, data: dict) -> None:
         return
 
     text = dashboard_path.read_text(encoding="utf-8")
-    data_js = f"const DATA = {json.dumps(data, separators=(',', ':'))};"
-    step_cfg_js = (
-        "const STEP_CONFIG = "
-        + json.dumps(data["metadata"]["step_config"], indent=2)
-        + ";"
-    )
+    data_json = json.dumps(data, separators=(",", ":")).replace("</", "<\\/")
 
-    text, n1 = re.subn(
+    text, n0 = re.subn(
+        r'(<script id="embeddedData" type="application/json">).*?(</script>)',
+        rf"\1{data_json}\2",
+        text,
+        count=1,
+        flags=re.DOTALL,
+    )
+    if n0 == 0:
+        text, n0 = re.subn(
+            r"<script>\s*// ─── Embedded Metrics Data ──────────────────────────────────",
+            (
+                '<script id="embeddedData" type="application/json">'
+                + data_json
+                + "</script>\n\n<script>\n// ─── Embedded Metrics Data ──────────────────────────────────"
+            ),
+            text,
+            count=1,
+            flags=re.DOTALL,
+        )
+
+    text, _ = re.subn(
         r"const DATA = .*?;\n\n// ─── Step Configuration",
-        data_js + "\n\n// ─── Step Configuration",
+        (
+            'const DATA = JSON.parse(document.getElementById("embeddedData").textContent || "{}");\n\n'
+            "// ─── Step Configuration"
+        ),
         text,
         flags=re.DOTALL,
     )
-    text, n2 = re.subn(
-        r"const STEP_CONFIG = \{.*?\};\n\nconst steps =",
-        step_cfg_js + "\n\nconst steps =",
+    text, _ = re.subn(
+        r"const STEP_CONFIG = .*?;\n\nconst steps =",
+        "const STEP_CONFIG = DATA.metadata.step_config || {};\n\nconst steps =",
         text,
         flags=re.DOTALL,
     )
@@ -820,10 +857,24 @@ def inject_dashboard_data(dashboard_path: Path, data: dict) -> None:
     text = text.replace("updateTimer(s.t);", "updateTimer(s.t, s);")
     text = text.replace("updateTimer(0);", "updateTimer(0, null);")
 
-    if n1 == 0 or n2 == 0:
-        raise RuntimeError("Failed to inject DATA/STEP_CONFIG into dashboard HTML")
+    if n0 == 0:
+        raise RuntimeError("Failed to inject embedded DATA into dashboard HTML")
 
     dashboard_path.write_text(text, encoding="utf-8")
+
+
+def _validate_output_path(path: Path, expected_suffix: str, must_exist: bool = False) -> Path:
+    resolved = path.expanduser().resolve()
+    cwd = Path.cwd().resolve()
+    if cwd not in resolved.parents and resolved != cwd:
+        raise ValueError(f"Output path must be inside working directory: {cwd}")
+    if expected_suffix and resolved.suffix.lower() != expected_suffix:
+        raise ValueError(f"Output path must end with {expected_suffix}: {resolved}")
+    if must_exist and not resolved.exists():
+        raise ValueError(f"Required path does not exist: {resolved}")
+    if resolved.exists() and resolved.is_dir():
+        raise ValueError(f"Path must be a file, not a directory: {resolved}")
+    return resolved
 
 
 def main() -> None:
@@ -833,9 +884,9 @@ def main() -> None:
     parser.add_argument("--dashboard", default=DEFAULT_DASHBOARD, help="Dashboard HTML path to update")
     args = parser.parse_args()
 
-    config_path = Path(args.config)
-    metrics_path = Path(args.metrics_out)
-    dashboard_path = Path(args.dashboard)
+    config_path = Path(args.config).expanduser().resolve()
+    metrics_path = _validate_output_path(Path(args.metrics_out), ".json")
+    dashboard_path = _validate_output_path(Path(args.dashboard), ".html", must_exist=True)
 
     meta, stages, events = load_config(config_path)
     data = simulate(meta, stages, events)
